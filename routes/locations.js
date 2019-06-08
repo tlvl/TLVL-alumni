@@ -5,12 +5,11 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   
   res.json({
-  { lat: 58.595,
+    lat: 58.595,
     lon: 25.014,
     title: 'Tallinn',
     alumniCount: 1312
-  },
+ 
 });
-
-
+});
 module.exports = router;
