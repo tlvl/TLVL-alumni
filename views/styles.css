@@ -1,0 +1,15 @@
+#mapid { 
+	height: 560px;
+ }
+ navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+.mapboxgl-ctrl-geocoder { 
+	min-width:100%; 
+	 }

@@ -1,2 +1,40 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class = "container-fluid text-center align-center">
+<img src="pict/01.png" class="img-fluid " alt="30 ЛЕТ!">
+</div>
+<div class = "text-center">
+Дорогие лицеисты! Совсем скоро здесь откроется карта выпускников  <a href="mock/index.html">(примерно такая)</a>. Чтобы не пропустить этот момент, <span id="AddFavViaSheens">&nbsp;</span> подпишитесь на обновления:
+</div>
+<script>
+  
+    function MobileDetect() {
+        var UA = navigator.userAgent.toLowerCase();
+        return (/android|webos|iris|bolt|mobile|iphone|ipad|ipod|iemobile|blackberry|windows phone|opera mobi|opera mini/i
+                .test(UA)) ? true : false;
+    }
+   
+    if (!MobileDetect()) {
+        document.getElementById( 'AddFavViaSheens' ).innerHTML = '<a class="link" href="" rel="sidebar" id="fav">поставьте эту страницу в закладки</a>';
+    }
+
+    document.getElementById( 'AddFavViaSheens' ).onclick = function () {
+        var title = document.title,
+                url = document.location,
+                UA = navigator.userAgent.toLowerCase(),
+                isFF = UA.indexOf('firefox') != -1,
+                isMac = UA.indexOf('mac') != -1,
+                isWebkit = UA.indexOf('webkit') != -1,
+                isIE = UA.indexOf('.net') != -1;
+ 
+ 
+        if ((isIE || isFF) && window.external) { 
+            window.external.AddFavorite(url, title);
+            return false;
+        }
+ 
+ 
+        if (isMac || isWebkit) { 
+            document.getElementById('AddFavViaSheens').innerHTML = 'Нажмите "' + (isMac ? 'Command/Cmd' : 'Ctrl') + ' + D" для добавления страницы в закладки';
+            return false;
+        }
+    }
+</script>
