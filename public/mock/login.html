@@ -41,7 +41,7 @@
  <!–– END OF NAVBAR––>
 
   <!–– LOGIN FORM––>
- <div class="container" style="height: 580px;">
+ <div class="container border" >
     <form class="form-horizontal " role="form" method="POST" action="/register">
         <div class="row">
             <div class="col-md-3 field-label-responsive">
@@ -52,7 +52,7 @@
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
                         <input type="text" name="email" class="form-control" id="email"
-                               placeholder="name@mail.com" required autofocus>
+                               placeholder="name@mail.com" required autofocus oninvalid="this.setCustomValidity('E-mail не может быть пустым')">
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
                         <input type="password" name="password" class="form-control" id="password"
-                               placeholder="Пароль" required>
+                               placeholder="Пароль" required oninvalid="this.setCustomValidity('Пароль не может быть пустым')">
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
        
     
        
-        <div class="row">
+        <div class="row mb-4">
             <div class="col-md-3"></div>
             <div class="col-md-6 text-center">
                 <button type="submit" class="btn btn-success"><i class="fa fa-user-plu "></i> Войти</button>
@@ -102,7 +102,7 @@
   <div class="footer-copyright text-center py-3"> <b>2019</b> Таллиннский Линнамяэский Русский Лицей:
     <a href="http://www.linnamae.tln.edu.ee/ "> http://www.linnamae.tln.edu.ee/ </a>
   </div>
-
+</footer>
   <!–– END OF FOOTER––>
  
 

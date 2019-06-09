@@ -20,6 +20,10 @@
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.3.0/mapbox-gl-geocoder.min.js'></script>
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.3.0/mapbox-gl-geocoder.css' type='text/css' />
+
+
+<script src="https://cdn.jsdelivr.net/npm/places.js@1.16.4"></script>
+
   <title>Карта выпускников TLVL </title>
 </head>
 <body style="background-color:#F8F9FA;">
@@ -59,7 +63,7 @@
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
                         <input type="text" name="name" class="form-control" id="name"
-                               placeholder="Мустафа Крабович" required autofocus>
+                               placeholder="Павел Гуляев" required oninvalid="this.setCustomValidity('Имя и Фамилия не могут быть пустыми')">
                     </div>
                 </div>
             </div>
@@ -80,7 +84,7 @@
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
                         <input type="text" name="email" class="form-control" id="email"
-                               placeholder="name@mail.com" required autofocus>
+                               placeholder="name@mail.com" required autofocus oninvalid="this.setCustomValidity('E-Mail не может быть пустым')">
                     </div>
                 </div>
             </div>
@@ -108,7 +112,7 @@
             <div class="col-md-3">
                 <div class="form-control-feedback">
                         <span class="text-danger align-middle">
-                            <i class="fa fa-close"> Example Error Message</i>
+                            <i class="fa fa-close"> Пример ошибки</i>
                         </span>
                 </div>
             </div>
@@ -124,7 +128,7 @@
                             <i class="fa fa-repeat"></i>
                         </div>
                         <input type="password" name="password-confirmation" class="form-control"
-                               id="password-confirm" placeholder="Пароль ещё раз" required>
+                               id="password-confirm" placeholder="Пароль ещё раз" required >
                     </div>
                 </div>
             </div>
@@ -138,7 +142,7 @@
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
                         <input type="text" name="name" class="form-control" id="name"
-                               placeholder="Светлана Светланович" required autofocus>
+                               placeholder="Светлана Васильевна Попова" oninvalid="this.setCustomValidity('Поле с классным руководителем не может быть пустое')">
                     </div>
                 </div>
             </div>
@@ -159,7 +163,7 @@
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
                         <input type="text" name="name" class="form-control" id="name"
-                               placeholder="Врач, программист, учитель, т.д." required autofocus>
+                               placeholder="Врач, программист, учитель, т.д." oninvalid="this.setCustomValidity('Область деятельности не может быть пустая')">
                     </div>
                 </div>
             </div>
@@ -178,7 +182,7 @@
             <div class="col-md-6">
       
               <div class="form-group" style="margin-left:  2.6rem">
-                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" oninvalid="this.setCustomValidity('Пожелание обязательно')"></textarea>
         
            </div>
             </div>
@@ -197,8 +201,7 @@
             <div class="col-md-6">
       
               <div class="form-group" style="margin-left:  2.6rem" required>
-                  <div id='map'></div>
-               <div id='geocoder' class='geocoder'></div>
+                 <input type="search" id="address-input" placeholder="Город?" oninvalid="this.setCustomValidity('Город обязателен')">
         
            </div>
             </div>
@@ -221,20 +224,12 @@
 
 </div>
 <script>
-mapboxgl.accessToken = 'pk.eyJ1Ijoibm9ub2Jpc2hhIiwiYSI6ImNqd201eGx2ZjExOG80NW5zdW1rYjEwc2IifQ.Y6ijjd8SnKNZADUR9uWE4Q';
-var map = new mapboxgl.Map({
-container: 'map',
-style: 'mapbox://styles/mapbox/streets-v11',
-center: [-79.4512, 43.6568],
-zoom: 13
-});
+  var placesAutocomplete = places({
+    appId: 'pl3NXXLDUFQU',
+    apiKey: '420ffad3d8315eb5ab1782d78cbe571d',
+    container: document.querySelector('#address-input')
+  });
  
-var geocoder = new MapboxGeocoder({
-accessToken: mapboxgl.accessToken,
-mapboxgl: mapboxgl
-});
- 
-document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 </script>
   <!–– END OF REGISTRATION FORM––>
 
@@ -248,6 +243,6 @@ document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
   <!–– END OF FOOTER––>
  
-
+</footer>
 </body>
 </html>
