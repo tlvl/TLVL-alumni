@@ -1,9 +1,15 @@
-const mongoose = require('mongoose');
-
-
-const UserSchema = new mongoose.Schema({
-  user: String,
-  password: String
+var mongoose = require('mongoose');
+var UserSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    unique: true,
+    required: true,
+    trim: true
+  },
+    password: {
+    type: String,
+    required: true,
+  }
 });
-
-mongoose.model('Location', UserSchema);
+var User = mongoose.model('User', UserSchema);
+module.exports = User;
