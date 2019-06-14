@@ -105,8 +105,8 @@
   <li class="list-group-item">Маслов Панкрат</li>
 </ul> 
 </div>
-<div class = "col-6 border">
-<div class = "container text-center align-center">
+<div class = "col-6 border" id = "alum-view">
+<div class = "container text-center align-center" id="alum-container">
    <h1>Коля Зей</h1>
    <hr/>
          <dl style="font-size:3vw;">
@@ -148,11 +148,15 @@
     accessToken: 'sk.eyJ1Ijoibm9ub2Jpc2hhIiwiYSI6ImNqd201enF3eDF1YnQ0NG8ydTd5cDhkajcifQ.bk0jp5sFLvNJPYTis0Xi_A'
 }).addTo(mymap);
 
-   	var marker = L.marker([58.595, 25.014]).addTo(mymap);
-   	marker.bindPopup("<b>1312 Выпускника</b>");
+     var marker = L.marker([58.595, 25.014]).addTo(mymap);
+     marker.city = "Tallinn";
+     marker.bindPopup("<strong>Tallinn</strong><br />1312 Выпускника");
+     marker.addEventListener("popupopen", () => { updateAlumniList(marker.city);});
 
-    var marker2 = L.marker([52.520, 13.405]).addTo(mymap);
-    marker2.bindPopup("<b>5 Выпускника</b>");
+    var marker2 = L.marker([52.520, 13.405]).bindPopup("<b>5 Выпускника</b>").addTo(mymap);
+    marker2.city = "Germany";
+    //marker2.bindPopup("<b>5 Выпускника</b>");
+    marker2.addEventListener("popupopen", () => { console.log(marker2.city);});
 
     var marker3 = L.marker([48.857, 2.352]).addTo(mymap);
     marker3.bindPopup("<b>12 Выпускника</b>");
@@ -160,7 +164,46 @@
     var marker4 = L.marker([40.731, -73.935]).addTo(mymap);
     marker4.bindPopup("<b>17 Выпускника</b>");
 
+    function updateAlumniList(city) {
+      console.log(city);
+      $('#memb').empty();
+      let alumniList = data; // GET query to tlvl-alumni.site/api/alumni/city
+      for (let alum of alumniList) {
+        $('#memb').append(`<li class="list-group-item" 
+        id="alum-${alum.id}">
+        ${alum.first_name} ${alum.last_name}</li>`);
+        $(`#alum-${alum.id}`).click(() => {
+          updateAlumniView(alum.id);
+          $('.list-group-item').removeClass('active');
+          $(`#alum-${alum.id}`).addClass('active');
+        });
+      }
+    }
 
+    function updateAlumniView(alumId) {
+      console.log(alumId);
+      $('#alum-view').empty();
+      let alumView = data;
+      for(let alum of alumView) {
+          $("#alum-view").append(`<div class = "container text-center align-center" id="alum-container">
+   <h1>${alum.first_name} ${alum.last_name}</h1>
+   <hr/>
+         <dl style="font-size:3vw;">
+    <dt>Закончил школу в:</dt>
+    <dd>- ${alum.graduate}</dd>
+    <dt>Классный руководитель:</dt>
+    <dd>- Цезарь</dd>
+     <dt>Сейчас живёт в:</dt>
+    <dd>- Риме</dd>
+     <dt>Работает:</dt>
+    <dd>-Достопримечательностью</dd>
+  </dl>  
+</div>
+</div>
+</div>
+</div>`);
+      }
+    }
   //ВЫВОД РЕЗУЛЬТАТОВ ГОРОДА
     geocoder.on('results', function(results) {
    console.log(results);
