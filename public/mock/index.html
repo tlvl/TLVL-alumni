@@ -82,7 +82,7 @@
  </b></div> </div>
 	<div class = "row">
 	<div class = "col-6 overflow-auto" style="height: 580px;">
- <ul class="list-group members" id = "memb">
+ <ul class="list-group members" id = "alumni">
   <li class="list-group-item">Павел Смирнов</li>
   <li class="list-group-item">Александр Иванов</li>
   <li class="list-group-item">Анастасия Зайцева</li>
@@ -166,10 +166,10 @@
 
     function updateAlumniList(city) {
       console.log(city);
-      $('#memb').empty();
+      $('#alumni').empty();
       let alumniList = data; // GET query to tlvl-alumni.site/api/alumni/city
       for (let alum of alumniList) {
-        $('#memb').append(`<li class="list-group-item" style = "cursor:pointer;"
+        $('#alumni').append(`<li class="list-group-item" style = "cursor:pointer;"
         id="alum-${alum.id}">
         ${alum.first_name} ${alum.last_name}</li>`);
         $(`#alum-${alum.id}`).click(() => {
@@ -230,7 +230,7 @@
            var element = document.createElement('li');
          element.classList.add("list-group-item");
          element.innerHTML = row_data;
-          document.getElementById("memb").appendChild(element);
+          document.getElementById("alumni").appendChild(element);
       console.log(answers[i].first_name);
        }
     
