@@ -169,7 +169,7 @@
       $('#memb').empty();
       let alumniList = data; // GET query to tlvl-alumni.site/api/alumni/city
       for (let alum of alumniList) {
-        $('#memb').append(`<li class="list-group-item" 
+        $('#memb').append(`<li class="list-group-item" style = "cursor:pointer;"
         id="alum-${alum.id}">
         ${alum.first_name} ${alum.last_name}</li>`);
         $(`#alum-${alum.id}`).click(() => {
@@ -185,8 +185,9 @@
       $('#alum-view').empty();
       let alumView = data;
       for(let alum of alumView) {
+      	if(alum.id == alumId) {
           $("#alum-view").append(`<div class = "container text-center align-center" id="alum-container">
-   <h1>${alum.first_name} ${alum.last_name}</h1>
+      	   <h1>${alum.first_name} ${alum.last_name}</h1>
    <hr/>
          <dl style="font-size:3vw;">
     <dt>Закончил школу в:</dt>
@@ -202,6 +203,7 @@
 </div>
 </div>
 </div>`);
+      }
       }
     }
   //ВЫВОД РЕЗУЛЬТАТОВ ГОРОДА
