@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!–– Connect all neccessary frameworks––>
-   <link rel="stylesheet" type="text/css" href="styles.css">
-   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/>
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-   crossorigin=""></script>
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-  <title>Карта выпускников TLVL </title>
-</head>
-<body style="background-color:#F8F9FA;">
- <!–– NAVBAR––>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">TLVL</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,19 +13,16 @@
     </div>
   </div>
 </nav>
- <!–– END OF NAVBAR––>
 
- <!–– MAP––>
+
   <div class = "container-fluid mr-3">
-   <div id="mapid">
-   	</div>
+   <div id="mapid" style = "height:560px;">
+    </div>
 </div>
- <!–– END OF MAP––>
 
- <!–– GRADUATES LIST––>
 
 <div class = "container-fluid mr-3 mt-3">
-	<div class="row"> <div class ="col-12 text-center">	<h1><b> ВЫПУСКНИКИ <select class="form-control text-center"  id="mySelect">
+    <div class="row"> <div class ="col-12 text-center"> <h1><b> ВЫПУСКНИКИ <select class="form-control text-center"  id="mySelect">
     <option value="2018">2018</option>
     <option value="2017">2017</option>
     <option value="2016">2016</option>
@@ -80,8 +56,8 @@
     </select>
     <button type="button" class="btn btn-primary" onclick="myFunction()">Искать!</button>
  </b></div> </div>
-	<div class = "row">
-	<div class = "col-6 overflow-auto" style="height: 580px;">
+    <div class = "row">
+    <div class = "col-6 overflow-auto" style="height: 580px;">
  <ul class="list-group members" id = "alumni">
   <li class="list-group-item">Павел Смирнов</li>
   <li class="list-group-item">Александр Иванов</li>
@@ -123,24 +99,37 @@
 </div>
 </div>
 </div>
- <!–– END OF GRADUATES LIST––>
 
- <!–– FOOTER––>
-
- <footer class="page-footer font-small blue">
-
-  <div class="footer-copyright text-center py-3"> <b>2019</b> Таллиннский Линнамяэский Русский Лицей:
-    <a href="http://www.linnamae.tln.edu.ee/ "> http://www.linnamae.tln.edu.ee/ </a>
-  </div>
-</footer>
-  <!–– END OF FOOTER––>
-  <script type="text/javascript" src="Graduaters.json"></script>
+ 
    <script type="text/javascript">
-   	/* MAP */
+    var data = [{
+      "id": 1,
+      "graduate": 2002,
+      "first_name": "Beverlie",
+      "last_name": "Yeoman",
+      "email": "byeoman0@google.it",
+      "gender": "Female"
+    }, {
+      "id": 2,
+       "graduate": 1985,
+      "first_name": "Mabel",
+      "last_name": "Saurin",
+      "email": "msaurin1@facebook.com",
+      "gender": "Female"
+    }, {
+      "id": 3,
+       "graduate": 1999,
+      "first_name": "Magnum",
+      "last_name": "Moniker",
+      "email": "mmoniker2@geocities.com",
+      "gender": "Male"
+    }]
 
-   	var mymap = L.map('mapid').setView([58.595, 25.014], 3);
+    /* MAP */
 
-   	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    var mymap = L.map('mapid').setView([58.595, 25.014], 3);
+
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     minZoom:2,
@@ -187,9 +176,9 @@
       $('#alum-view').empty();
       let alumView = data;
       for(let alum of alumView) {
-      	if(alum.id == alumId) {
+        if(alum.id == alumId) {
           $("#alum-view").append(`<div class = "container text-center align-center" id="alum-container">
-      	   <h1>${alum.first_name} ${alum.last_name}</h1>
+           <h1>${alum.first_name} ${alum.last_name}</h1>
    <hr/>
          <dl style="font-size:3vw;">
     <dt>Закончил школу в:</dt>
@@ -208,37 +197,11 @@
       }
       }
     }
-  //ВЫВОД РЕЗУЛЬТАТОВ ГОРОДА
-    geocoder.on('results', function(results) {
-   console.log(results);
-})
-    /* END OF MAP */
+  </script>
+ <footer class="page-footer font-small blue">
 
-    /* GRADUATERS */
-    /*
-    function myFunction() {
-     var x = document.getElementById("mySelect").selectedIndex;
+  <div class="footer-copyright text-center py-3"> <b>2019</b> Таллиннский Линнамяэский Русский Лицей:
+    <a href="http://www.linnamae.tln.edu.ee/ "> http://www.linnamae.tln.edu.ee/ </a>
+  </div>
+</footer>
 
-    var answers = data;
-    for(var i = 0; i < answers.length; i++) {
-    	var row_data = "";
-    	if(answers[i].graduate == document.getElementsByTagName("option")[x].value) {
-    		var row_data = "";
-    
-         var row_data = row_data + "  " + answers[i].first_name;
-          }
-
-  
-           var element = document.createElement('li');
-         element.classList.add("list-group-item");
-         element.innerHTML = row_data;
-          document.getElementById("alumni").appendChild(element);
-      console.log(answers[i].first_name);
-       }
-    
-    }
-*/
-   </script>
-
-</body>
-</html>
