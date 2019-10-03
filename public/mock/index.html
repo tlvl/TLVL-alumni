@@ -78,7 +78,7 @@
     <option value="1990">1990</option>
     <option value="1989">1989</option>
     </select>
-    <button type="button" class="btn btn-primary" onclick="myFunction()">Искать!</button>
+    <button type="button" class="btn btn-primary" onclick="setYear()">Искать!</button>
  </b></div> </div>
 	<div class = "row">
 	<div class = "col-6 overflow-auto" style="height: 580px;">
@@ -116,7 +116,7 @@
     <dd>- Цезарь</dd>
      <dt>Сейчас живёт в:</dt>
     <dd>- Риме</dd>
-     <dt>Работает:</dt>
+     <dt>Работает:</dt>z
     <dd>-Достопримечательностью</dd>
   </dl>  
 </div>
@@ -135,6 +135,7 @@
 </footer>
   <!–– END OF FOOTER––>
   <script type="text/javascript" src="Graduaters.json"></script>
+  <script type="text/javascript" src="Locations.json"></script>
    <script type="text/javascript">
    	/* MAP */
 
@@ -148,23 +149,20 @@
     accessToken: 'sk.eyJ1Ijoibm9ub2Jpc2hhIiwiYSI6ImNqd201enF3eDF1YnQ0NG8ydTd5cDhkajcifQ.bk0jp5sFLvNJPYTis0Xi_A'
 }).addTo(mymap);
    
-     updateAlumniList("Tallinn");
+       let CountriesList = Locations;
+      
+	  
+	  function SetCountries() {
+	   for (let Country of CountriesList) {
+	   let marker = L.marker([Country.lat, Country.lon]).addTo(mymap);
+	   marker.city = Country.location;
+       marker.bindPopup("<strong>"+ Country.location + "</strong><br />"+ Country.count +" Выпускника").openPopup();
+       marker.addEventListener("popupopen", () => { updateAlumniList(marker.city);});
+	   }
+	  }
+	  
+	  SetCountries();
 
-     var marker = L.marker([58.595, 25.014]).addTo(mymap);
-     marker.city = "Tallinn";
-     marker.bindPopup("<strong>Tallinn</strong><br />1312 Выпускника").openPopup();
-     marker.addEventListener("popupopen", () => { updateAlumniList(marker.city);});
-
-    var marker2 = L.marker([52.520, 13.405]).bindPopup("<b>5 Выпускника</b>").addTo(mymap);
-    marker2.city = "Germany";
-    //marker2.bindPopup("<b>5 Выпускника</b>");
-    marker2.addEventListener("popupopen", () => { console.log(marker2.city);});
-
-    var marker3 = L.marker([48.857, 2.352]).addTo(mymap);
-    marker3.bindPopup("<b>12 Выпускника</b>");
-
-    var marker4 = L.marker([40.731, -73.935]).addTo(mymap);
-    marker4.bindPopup("<b>17 Выпускника</b>");
 
     function updateAlumniList(city) {
       console.log(city);
@@ -181,7 +179,22 @@
         });
       }
     }
-
+      function updateAlumniList(city, year) {
+      console.log(city);
+      $('#alumni').empty();
+      let alumniList = data; // GET query to tlvl-alumni.site/api/alumni/city
+      for (let alum of alumniList) {
+        $('#alumni').append(`<li class="list-group-item" style = "cursor:pointer;"
+        id="alum-${alum.id}">
+        ${alum.first_name} ${alum.last_name}</li>`);
+        $(`#alum-${alum.id}`).click(() => {
+          updateAlumniView(alum.id);
+          $('.list-group-item').removeClass('active');
+          $(`#alum-${alum.id}`).addClass('active');
+        });
+      }
+    }
+	
     function updateAlumniView(alumId) {
       console.log(alumId);
       $('#alum-view').empty();
@@ -208,6 +221,14 @@
       }
       }
     }
+	
+	function getYear(){
+	let e = document.getElementById("mySelect"); 
+    let strUser = e.options[e.selectedIndex].value;
+	console.log(strUser);
+}
+	
+	
   //ВЫВОД РЕЗУЛЬТАТОВ ГОРОДА
     geocoder.on('results', function(results) {
    console.log(results);
@@ -237,7 +258,7 @@
        }
     
     }
-*/
+	*/
    </script>
 
 </body>
