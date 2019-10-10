@@ -155,19 +155,26 @@
 	  function SetCountries() {
 	   for (let Country of CountriesList) {
 	   let marker = L.marker([Country.lat, Country.lon]).addTo(mymap);
-	   marker.city = Country.location;
+	
        marker.bindPopup("<strong>"+ Country.location + "</strong><br />"+ Country.count +" Выпускника").openPopup();
-       marker.addEventListener("popupopen", () => { updateAlumniList(marker.city);});
+       marker.addEventListener("popupopen", () => { updateAlumniList(Country.locationId);});
 	   }
 	  }
 	  
 	  SetCountries();
 
+	  function mockAlumniList(cityId) {
+	  switch(cityId){
+	  case(1): return Tallinn; 
+	  case(2): return Berlin; 
+	  case(3): return Paris; 
+	  }
+	  }
 
-    function updateAlumniList(city) {
-      console.log(city);
+    function updateAlumniList(locationId) {
+      console.log(locationId);
       $('#alumni').empty();
-      let alumniList = data; // GET query to tlvl-alumni.site/api/alumni/city
+      let alumniList = mockAlumniList(locationId); // GET query to tlvl-alumni.site/api/alumni/city
       for (let alum of alumniList) {
         $('#alumni').append(`<li class="list-group-item" style = "cursor:pointer;"
         id="alum-${alum.id}">
@@ -179,10 +186,10 @@
         });
       }
     }
-      function updateAlumniList(city, year) {
-      console.log(city);
+     /* function updateAlumniList(locationId, year) {
+      console.log(locationId);
       $('#alumni').empty();
-      let alumniList = data; // GET query to tlvl-alumni.site/api/alumni/city
+      let alumniList = mockAlumniList(locationId); // GET query to tlvl-alumni.site/api/alumni/city
       for (let alum of alumniList) {
         $('#alumni').append(`<li class="list-group-item" style = "cursor:pointer;"
         id="alum-${alum.id}">
@@ -194,11 +201,18 @@
         });
       }
     }
-	
+	*/
+	function mockAlumnusById(alumId) {
+	 switch(alumId){
+	  case(1): return Tallinn; 
+	  case(2): return Berlin; 
+	  case(3): return Paris; 
+	  }
+	}
     function updateAlumniView(alumId) {
-      console.log(alumId);
+      console.log("Alum Id " +alumId);
       $('#alum-view').empty();
-      let alumView = data;
+      let alumView = mockAlumnusById(alumId);
       for(let alum of alumView) {
       	if(alum.id == alumId) {
           $("#alum-view").append(`<div class = "container text-center align-center" id="alum-container">
