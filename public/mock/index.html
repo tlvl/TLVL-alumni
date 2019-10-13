@@ -134,7 +134,7 @@
   </div>
 </footer>
   <!–– END OF FOOTER––>
-  <script type="text/javascript" src="Graduaters.json"></script>
+  <script type="text/javascript" src="Alumni.json"></script>
   <script type="text/javascript" src="Locations.json"></script>
    <script type="text/javascript">
    	/* MAP */
@@ -180,7 +180,7 @@
         id="alum-${alum.id}">
         ${alum.first_name} ${alum.last_name}</li>`);
         $(`#alum-${alum.id}`).click(() => {
-          updateAlumniView(alum.id);
+          updateAlumniView(alum.id, locationId);
           $('.list-group-item').removeClass('active');
           $(`#alum-${alum.id}`).addClass('active');
         });
@@ -209,12 +209,13 @@
 	  case(3): return Paris; 
 	  }
 	}
-    function updateAlumniView(alumId) {
-      console.log("Alum Id " +alumId);
+    function updateAlumniView(alumId, locationId) {
+            console.log("Alum Id " + locationId );
       $('#alum-view').empty();
-      let alumView = mockAlumnusById(alumId);
+      let alumView = mockAlumnusById(locationId);
       for(let alum of alumView) {
       	if(alum.id == alumId) {
+
           $("#alum-view").append(`<div class = "container text-center align-center" id="alum-container">
       	   <h1>${alum.first_name} ${alum.last_name}</h1>
    <hr/>
@@ -222,9 +223,9 @@
     <dt>Закончил школу в:</dt>
     <dd>- ${alum.graduate}</dd>
     <dt>Классный руководитель:</dt>
-    <dd>- Цезарь</dd>
+    <dd>- ${alum.teacher}</dd>
      <dt>Сейчас живёт в:</dt>
-    <dd>- Риме</dd>
+    <dd>- ${alumId}</dd>
      <dt>Работает:</dt>
     <dd>-Достопримечательностью</dd>
   </dl>  
