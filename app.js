@@ -4,13 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var locationsRouter = require('./routes/locations');
+var indexRouter = require('./app_server/routes/index');
+var locationsRouter = require('./app_server/routes/locations');
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
