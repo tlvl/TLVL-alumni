@@ -1,5 +1,5 @@
 #mapid { 
-	height: 560px;
+  height: 560px;
  }
  navbar .navbar-nav {
   display: inline-block;
@@ -11,8 +11,8 @@
   text-align: center;
 }
 .mapboxgl-ctrl-geocoder { 
-	min-width:100%; 
-	 }
+  min-width:100%; 
+   }
 html {
   font-size: 1rem;
 }

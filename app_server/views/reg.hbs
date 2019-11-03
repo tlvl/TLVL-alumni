@@ -3,7 +3,7 @@
 </div>
 
 <div class = "text-center">
-  Дорогие лицеисты! Совсем скоро здесь откроется карта выпускников  <a href="map">(примерно такая)</a>. Чтобы не пропустить этот момент, <span id="AddFavViaSheens">&nbsp;</span> подпишитесь на обновления:
+  Дорогие лицеисты!{{title}} Совсем скоро здесь откроется карта выпускников  <a href="home">(примерно такая)</a>. Чтобы не пропустить этот момент, <span id="AddFavViaSheens">&nbsp;</span> подпишитесь на обновления:
 </div>
 <script>
     function MobileDetect() {
@@ -37,15 +37,4 @@
             return false;
         }
     }
-fetch('/api/locations')
-  .then(response => {
-    return response.json()
-  })
-  .then(data => {
-    // Work with JSON data here
-    console.log(data)
-  })
-  .catch(err => {
-    // Do something for an error here
-  })
 </script>
