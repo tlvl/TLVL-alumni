@@ -27,10 +27,19 @@ const mockLocations = () => {
       lat: 40.730610,
       lng: -73.935242,
       alumni_count: 17,
+    },
+    {
+      location_id: 4567,
+      location_name: "Moscow",
+      country: "Russian Federation",
+      country_code: "RU",
+      lat: 55.755825,
+      lng: 37.617298,
+      alumni_count: 120,
     }
   ]
 };
 
 module.exports = {
-  mockLocations
-}
+    mockLocations,
+};
