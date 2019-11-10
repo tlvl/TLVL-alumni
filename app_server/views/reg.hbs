@@ -37,7 +37,8 @@
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
                         <input type="text" name="name" class="form-control" id="name"
-                               placeholder="Павел Гуляев" required oninvalid="this.setCustomValidity('Имя и Фамилия не могут быть пустыми')">
+                               placeholder="Павел Гуляев" required="" autofocus oninvalid="this.setCustomValidity('Имя и Фамилия обязательны')"
+ oninput="setCustomValidity('')"  >
                     </div>
                 </div>
             </div>
@@ -58,7 +59,8 @@
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
                         <input type="text" name="email" class="form-control" id="email"
-                               placeholder="name@mail.com" required autofocus oninvalid="this.setCustomValidity('E-Mail не может быть пустым')">
+                               placeholder="name@mail.com" required oninvalid="this.setCustomValidity('Электронная почта обязательна')"
+ oninput="setCustomValidity('')" >
                     </div>
                 </div>
             </div>
@@ -79,14 +81,15 @@
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
                         <input type="password" name="password" class="form-control" id="password"
-                               placeholder="Пароль" required>
+                               placeholder="Пароль" required  oninvalid="this.setCustomValidity('Пароль обязателен')"
+ oninput="setCustomValidity('')" >
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-control-feedback">
                         <span class="text-danger align-middle">
-                            <i class="fa fa-close"> Пример ошибки</i>
+                            <i class="fa fa-close"></i>
                         </span>
                 </div>
             </div>
@@ -102,7 +105,8 @@
                             <i class="fa fa-repeat"></i>
                         </div>
                         <input type="password" name="password-confirmation" class="form-control"
-                               id="password-confirm" placeholder="Пароль ещё раз" required >
+                               id="password-confirm" placeholder="Пароль ещё раз" required  oninvalid="this.setCustomValidity('Пароль обязателен')"
+ oninput="setCustomValidity('')" >
                     </div>
                 </div>
             </div>
@@ -115,8 +119,8 @@
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                        <input type="text" name="name" class="form-control" id="name"
-                               placeholder="Светлана Васильевна Попова" oninvalid="this.setCustomValidity('Поле с классным руководителем не может быть пустое')">
+                        <input type="text" name="teacherName" class="form-control" id="name"
+                               placeholder="Светлана Васильевна Попова" >
                     </div>
                 </div>
             </div>
@@ -136,8 +140,8 @@
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                        <input type="text" name="name" class="form-control" id="name"
-                               placeholder="Врач, программист, учитель, т.д." oninvalid="this.setCustomValidity('Область деятельности не может быть пустая')">
+                        <input type="text" name="WorkScope" class="form-control" id="name"
+                               placeholder="Врач, программист, учитель, т.д." >
                     </div>
                 </div>
             </div>
@@ -156,7 +160,7 @@
             <div class="col-md-6">
       
               <div class="form-group" style="margin-left:  2.6rem">
-                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" oninvalid="this.setCustomValidity('Пожелание обязательно')"></textarea>
+                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
         
            </div>
             </div>
@@ -168,16 +172,24 @@
                 </div>
             </div>
         </div>
+
+
            <div class="row">
             <div class="col-md-3 field-label-responsive">
                 <label for="name">Город в котором находитесь</label>
             </div>
             <div class="col-md-6">
       
-              <div id="map"></div>
+        
         <div id="search" class = "form-group" style="margin-left:  2.6rem" required>
-            <input type="text" name="addr" value="" id="addr" class ="addr" size="10" />
-            <button type="button" onclick="addr_search();">Поиск</button>
+            <div class="row">
+            <div class = "col-md-6">
+            <input type="text" name="addr" value="" id="addr" class ="addr form-control" size="10" />
+        </div>
+        <div class = "col-md-6">
+            <button type="button" class="btn btn-info" onclick="addr_search();">Поиск</button>
+            </div>
+        </div>
             <div id="results"/>
         </div>
             </div>
@@ -190,13 +202,36 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="name">Кем вы являетесь?</label>
+            </div>
+            <div class="col-md-6">
+       <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+          <select name="Status" class = "form-group form-control" style="margin-left:  2.6rem " >
+   <option value="Teacher" >Учитель</option>
+   <option value="Alumni" selected="selected">Ученик</option>
+   
+    </select>
+            </div>
+        </div>
+    </div>
+    <br/>
+
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6 text-center">
                 <button type="submit" class="btn btn-success"><i class="fa fa-user-plu "></i> Зарегистрироваться</button>
             </div>
         </div>
+
+
+
          <input type="hidden" name="realAddr" value="" id="realAddr" class ="realAddr" size="10" / >
+ 
+
+
     </form>
    
 
@@ -207,6 +242,7 @@
        
 function chooseAddr(lat1, lng1, lat2, lng2, osm_type) {
     console.log(lat1 + "/" + lng1);
+    $('#results').empty();
     $('<b>', { html: "Вы выбрали адрес: " + osm_type }).appendTo('#results');
     $("#realAddr").val(lat1 + "/" +  lng1);
 
@@ -226,13 +262,13 @@ function addr_search() {
 
         $('#results').empty();
         if (items.length != 0) {
-            $('<p>', { html: "Нажмите на адрес, чтобы выбрать:" }).appendTo('#results');
+            $('<p>', { html: "Нажмите на адрес, чтобы выбрать:" }).append('#results');
             $('<ul/>', {
                 'class': 'my-new-list',
                 html: items.join('')
             }).appendTo('#results');
         } else {
-            $('<p>', { html: "Город не найден." }).appendTo('#results');
+            $('<p>', { html: "Город не найден." }).append('#results');
         }
     });
 }
