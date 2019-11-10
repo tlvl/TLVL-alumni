@@ -1,3 +1,5 @@
+
+   
 <div style="background-color:#F8F9FA;">
  <!–– NAVBAR––>
      <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -172,10 +174,12 @@
             </div>
             <div class="col-md-6">
       
-              <div class="form-group" style="margin-left:  2.6rem" required>
-                 <input type="search" id="address-input" placeholder="Город?" oninvalid="this.setCustomValidity('Город обязателен')">
-        
-           </div>
+              <div id="map"></div>
+        <div id="search" class = "form-group" style="margin-left:  2.6rem" required>
+            <input type="text" name="addr" value="" id="addr" class ="addr" size="10" />
+            <button type="button" onclick="addr_search();">Поиск</button>
+            <div id="results"/>
+        </div>
             </div>
             <div class="col-md-3">
                 <div class="form-control-feedback">
@@ -185,24 +189,57 @@
                 </div>
             </div>
         </div>
+    </div>
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6 text-center">
                 <button type="submit" class="btn btn-success"><i class="fa fa-user-plu "></i> Зарегистрироваться</button>
             </div>
         </div>
+         <input type="hidden" name="realAddr" value="" id="realAddr" class ="realAddr" size="10" / >
     </form>
    
 
 </div>
-<script>
-  var placesAutocomplete = places({
-    appId: 'pl3NXXLDUFQU',
-    apiKey: '420ffad3d8315eb5ab1782d78cbe571d',
-    container: document.querySelector('#address-input')
-  });
- 
-</script>
+
+
+    <script>
+       
+function chooseAddr(lat1, lng1, lat2, lng2, osm_type) {
+    console.log(lat1 + "/" + lng1);
+    $('<b>', { html: "Вы выбрали адрес: " + osm_type }).appendTo('#results');
+    $("#realAddr").val(lat1 + "/" +  lng1);
+
+}
+
+function addr_search() {
+    var inp = document.getElementById("addr");
+
+    $.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + inp.value, function(data) {
+        var items = [];
+
+        $.each(data, function(key, val) {
+            bb = val.boundingbox;
+            items.push("<li><a href='#' onclick='chooseAddr(" + bb[0] + ", " + bb[2] + ", " + bb[1] + ", " + bb[3]  + ", \"" + val.display_name + "\");return false;'>" + val.display_name + '</a></li>');
+        });
+
+
+        $('#results').empty();
+        if (items.length != 0) {
+            $('<p>', { html: "Нажмите на адрес, чтобы выбрать:" }).appendTo('#results');
+            $('<ul/>', {
+                'class': 'my-new-list',
+                html: items.join('')
+            }).appendTo('#results');
+        } else {
+            $('<p>', { html: "Город не найден." }).appendTo('#results');
+        }
+    });
+}
+
+    </script>
+
+
   <!–– END OF REGISTRATION FORM––>
 
  <!–– FOOTER––>
