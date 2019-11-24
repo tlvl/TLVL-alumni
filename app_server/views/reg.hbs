@@ -20,7 +20,7 @@
 
   <!–– REGISTRATION FORM––>
  <div class="container">
-    <form class="form-horizontal" role="form" method="GET" action="/register">
+    <form class="form-horizontal" role="form" method="POST" action="/users/create">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
@@ -30,13 +30,13 @@
         </div>
         <div class="row">
             <div class="col-md-3 field-label-responsive">
-                <label for="name">Имя, Фамилия</label>
+                <label for="fullName">Имя, Фамилия</label>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                        <input type="text" name="name" class="form-control" id="name"
+                        <input type="text" name="fullName" class="form-control" id="fullName"
                                placeholder="Павел Гуляев" required="" autofocus oninvalid="this.setCustomValidity('Имя и Фамилия обязательны')"
  oninput="setCustomValidity('')"  >
                     </div>
@@ -113,7 +113,7 @@
         </div>
         <div class="row">
             <div class="col-md-3 field-label-responsive">
-                <label for="name">Классный преводаватель</label>
+                <label for="name">Классный руководитель</label>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
@@ -155,12 +155,12 @@
         </div>
          <div class="row">
             <div class="col-md-3 field-label-responsive">
-                <label for="name">Пожелание Лицею</label>
+                <label for="greeting">Пожелание Лицею</label>
             </div>
             <div class="col-md-6">
       
               <div class="form-group" style="margin-left:  2.6rem">
-                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
+                 <textarea class="form-control" id="greeting" rows="3" ></textarea>
         
            </div>
             </div>
@@ -176,7 +176,7 @@
 
            <div class="row">
             <div class="col-md-3 field-label-responsive">
-                <label for="name">Город в котором находитесь</label>
+                <label for="addr">Город в котором находитесь</label>
             </div>
             <div class="col-md-6">
       
@@ -205,11 +205,11 @@
 
     <div class="row">
             <div class="col-md-3 field-label-responsive">
-                <label for="name">Кем вы являетесь?</label>
+                <label for="role">Кем вы являетесь?</label>
             </div>
             <div class="col-md-6">
        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-          <select name="Status" class = "form-group form-control" style="margin-left:  2.6rem " >
+          <select name="role" class = "form-group form-control" style="margin-left:  2.6rem " >
    <option value="Teacher" >Учитель</option>
    <option value="Alumni" selected="selected">Ученик</option>
    

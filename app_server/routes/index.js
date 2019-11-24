@@ -1,6 +1,11 @@
 const router = require('express').Router();
+const userRoutes = require('./userRoutes');
+
 const locations = require('../controllers/locations');
 const others = require('../controllers/others');
+
+
+router.use('/users', userRoutes);
 
 /* GET index page. */
 router.get('/', locations.homePage);
