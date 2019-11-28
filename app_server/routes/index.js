@@ -13,5 +13,6 @@ router.get('/map', others.mapPage);
 router.get('/about', others.aboutPage);
 router.get('/reg', others.regPage);
 router.get('/login', others.loginPage);
+router.get('/user', others.userPage);
 
 module.exports = router;

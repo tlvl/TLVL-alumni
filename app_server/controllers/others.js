@@ -11,9 +11,13 @@ const regPage = (req, res) => {
 const loginPage = (req, res) => {
   res.render('login', {title: 'Login'})
 };
+const userPage = (req, res) => {
+  res.render('user', {title: 'User'})
+};
 module.exports = {
     mapPage,
     aboutPage,
     regPage,
-    loginPage
+    loginPage,
+	userPage
 };
