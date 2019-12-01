@@ -62,7 +62,7 @@
     <button type="button" class="btn btn-primary" onclick="setYear()">Искать!</button>
  </b></div> </div>
     <div class = "row">
-    <div class = "col-6 overflow-auto" style="height: 580px;">
+    <div class = "col-6 overflow-auto" >
  <ul class="list-group members" id = "alumni">
   <li class="list-group-item">Павел Смирнов</li>
   <li class="list-group-item">Александр Иванов</li>
@@ -87,17 +87,17 @@
 </ul> 
 </div>
 <div class = "col-6 border" id = "alum-view">
-<div class = "container text-center align-center" id="alum-container">
+<div class = "container text-center align-center display-4" id="alum-container">
    <h1>Коля Зей</h1>
    <hr/>
-         <dl style="font-size:3vw;">
-    <dt>Закончил школу в:</dt>
+         <dl >
+    <dt >Закончил школу в:</dt>
     <dd>- 1995 году</dd>
     <dt>Классный руководитель:</dt>
     <dd>- Цезарь</dd>
      <dt>Сейчас живёт в:</dt>
     <dd>- Риме</dd>
-     <dt>Работает:</dt>z
+     <dt>Работает:</dt>
     <dd>-Достопримечательностью</dd>
   </dl>  
 </div>
@@ -299,10 +299,10 @@
       for(let alum of alumView) {
         if(alum.id == alumId) {
 
-          $("#alum-view").append(`<div class = "container text-center align-center" id="alum-container">
+          $("#alum-view").append(`<div class = "container text-center align-center display-4" id="alum-container">
            <h1>${alum.first_name} ${alum.last_name}</h1>
    <hr/>
-         <dl style="font-size:3vw;">
+         <dl>
     <dt>Закончил школу в:</dt>
     <dd>- ${alum.graduate}</dd>
     <dt>Классный руководитель:</dt>
