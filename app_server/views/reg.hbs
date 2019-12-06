@@ -119,7 +119,7 @@
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                        <input type="text" name="teacherName" class="form-control" id="name" required
+                        <input type="text" name="teacherName" class="form-control" id="teacherName" required
                                placeholder="Светлана Васильевна Попова" oninvalid="this.setCustomValidity('Учитель обязателен')"
  oninput="setCustomValidity('')">
                     </div>
@@ -141,7 +141,7 @@
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                        <input type="text" name="WorkScope" class="form-control" id="name"
+                        <input type="text" name="WorkScope" class="form-control" id="WorkScope"
                                placeholder="Врач, программист, учитель, т.д." >
                     </div>
                 </div>
@@ -275,6 +275,15 @@ function addr_search() {
 }
 
     </script>
+	
+	<script>
+
+const latitude = 52.509647;
+const longitude = 13.375944;
+
+const cities = nearestCities(latitude, longitude);
+
+	</script>
 
 
   <!–– END OF REGISTRATION FORM––>

@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const nearestStations = require('find-nearest-cities');
 
 const findUserParams = (body) => {
   console.log(body);
