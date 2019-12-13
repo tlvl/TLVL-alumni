@@ -41,8 +41,8 @@ const EM = require('../modules/email-dispatcher');
         res.redirect('/map');
 	});
 	
-	router.post('/', function(req, res){
-		AM.manualLogin(req.body['user'], req.body['pass'], function(e, o){
+	router.post('/login', function(req, res){
+		AM.manualLogin(req.body['user'], req.body['password'], function(e, o){
 			if (!o){
 				res.status(400).send(e);
 			}	else{
@@ -73,14 +73,11 @@ router.get('/reg', function(req, res) {
 });
 
 router.post('/reg', function(req, res){
+    console.log(req.body);
     AM.addNewAccount({
-        name 	: req.body['name'],
+        name 	: req.body['fullName'],
         email 	: req.body['email'],
-        user 	: req.body['user'],
-        pass	: req.body['pass'],
-        country : req.body['country'],
-        lat: req.body['lat'],
-        lon: req.body['lon'],
+        pass	: req.body['password'],
     }, function(e){
         if (e){
             res.status(400).send(e);

@@ -181,17 +181,33 @@ var generateSalt = function()
 	return salt;
 }
 
+var scrypt = function(str) {
+	return crypto.createHash('scrypt').update(str).digest('hex');
+}
+
 var saltAndHash = function(pass, callback)
 {
 	var salt = generateSalt();
-	callback(salt + crypto.scrypt(pass + salt));
+	crypto.scrypt(pass, salt, 64, (err, derivedKey) => {
+		if (err) {
+			throw err;
+		} else {
+			callback(salt + derivedKey.toString('hex'));
+		}
+	});
 }
 
 var validatePassword = function(plainPass, hashedPass, callback)
 {
 	var salt = hashedPass.substr(0, 10);
-	var validHash = salt + crypto.scrypt(plainPass + salt);
-	callback(null, hashedPass === validHash);
+	crypto.scrypt(plainPass, salt, 64, (err, derivedKey) => {
+		if (err) {
+			throw err;
+		} else {
+			var validHash = salt + derivedKey.toString('hex');
+			callback(null, hashedPass === validHash);
+		}
+	});
 }
 
 var getObjectId = function(id)
