@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+const app = require('../app');
+const debug = require('debug')('tlvl-alumni:server');
+const http = require('http');
+const db = require('../db');
+const User = require('../app_server/models/user');
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+
+
+const findUserParams = (body) => {
+  console.log(body);
+  return {
+    fullName: 'body.fullName',
+    email: body.email,
+    password: body.password,
+    address: {
+      country: 'EE',
+      location: body.addr,
+    },
+  }
+}
+
+const create = (req, res, next) => {
+  userParams = findUserParams(req.body);
+  let newUser = User.create(userParams);
+
+  //User.register(newUser, req.body.password, (error, user) => {
+    if (newUser) {
+      console.log('success', newUser);
+      res.locals.redirect = '/map';
+      //next();
+    } else {
+      console.log('error');
+      res.locals.redirect = '/reg';
+      //next();
+    }
+  //});
+}
+
+module.exports = {
+  create,
+}
