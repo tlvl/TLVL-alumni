@@ -1,20 +1,7 @@
   
 <div style="background-color:#F8F9FA;">
  <!–– NAVBAR––>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">TLVL</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="map">Карта<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="about">О сайте</a>
-      <a class="nav-item nav-link" href="reg">Регистрация</a>
-      <a class="nav-item nav-link" href="login">Вход</a>
-    </div>
-  </div>
-</nav>
+  {{>navbar map='active'}}
  <!–– END OF NAVBAR––>
 
  <!–– MAP––>
@@ -269,23 +256,6 @@
       }
     }
 
-
-     /* function updateAlumniList(locationId, year) {
-      console.log(locationId);
-      $('#alumni').empty();
-      let alumniList = mockAlumniList(locationId); // GET query to tlvl-alumni.site/api/alumni/city
-      for (let alum of alumniList) {
-        $('#alumni').append(`<li class="list-group-item" style = "cursor:pointer;"
-        id="alum-${alum.id}">
-        ${alum.first_name} ${alum.last_name}</li>`);
-        $(`#alum-${alum.id}`).click(() => {
-          updateAlumniView(alum.id);
-          $('.list-group-item').removeClass('active');
-          $(`#alum-${alum.id}`).addClass('active');
-        });
-      }
-    }
-    */
     function mockAlumnusById(alumId) {
      switch(alumId){
       case(1): return Tallinn; 
@@ -334,30 +304,6 @@
 })
     /* END OF MAP */
 
-    /* GRADUATERS */
-    /*
-    function myFunction() {
-     var x = document.getElementById("mySelect").selectedIndex;
-
-    var answers = data;
-    for(var i = 0; i < answers.length; i++) {
-        var row_data = "";
-        if(answers[i].graduate == document.getElementsByTagName("option")[x].value) {
-            var row_data = "";
-    
-         var row_data = row_data + "  " + answers[i].first_name;
-          }
-
-  
-           var element = document.createElement('li');
-         element.classList.add("list-group-item");
-         element.innerHTML = row_data;
-          document.getElementById("alumni").appendChild(element);
-      console.log(answers[i].first_name);
-       }
-    
-    }
-    */
    </script>
 
 </div>

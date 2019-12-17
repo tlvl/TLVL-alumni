@@ -7,11 +7,15 @@ const logger = require('morgan');
 
 const apiRouter = require('./app_api/routes');
 const siteRouter = require('./app_server/routes/index');
+
+const mongoose = require('mongoose');
 require('./db');
 const app = express();
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
+const hbs = require('hbs');
+hbs.registerPartials(path.join(__dirname, 'app_server', 'views', 'partials'));
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'hbs');
@@ -27,7 +31,7 @@ app.use(session({
 	proxy: true,
 	resave: true,
 	saveUninitialized: true,
-	store: new MongoStore({ url: process.env.DB_URL })
+	store: new MongoStore({ mongooseConnection: mongoose.connection })
 	})
 );
 

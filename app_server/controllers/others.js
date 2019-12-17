@@ -1,5 +1,11 @@
 const mapPage = (req, res) => {
-  res.render('map', {title: 'Map'})
+  if (req.session.user) {
+    res.render('map', {
+      title: 'Map',
+      user: req.session.user,
+      full: true,
+    });
+  };
 };
 
 const aboutPage = (req, res) => {
@@ -14,6 +20,7 @@ const loginPage = (req, res) => {
 const userPage = (req, res) => {
   res.render('user', {title: 'User'})
 };
+
 module.exports = {
     mapPage,
     aboutPage,

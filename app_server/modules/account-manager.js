@@ -4,15 +4,15 @@ const moment 		= require('moment');
 const MongoClient 	= require('mongodb').MongoClient;
 
 var db, accounts;
-MongoClient.connect(process.env.DB_URL, { useNewUrlParser: true }, function(e, client) {
+MongoClient.connect('mongodb://localhost/', { useNewUrlParser: true }, function(e, client) {
 	if (e){
 		console.log(e);
 	}	else{
-		db = client.db(process.env.DB_NAME);
+		db = client.db('alumni');
 		accounts = db.collection('accounts');
 	// index fields 'user' & 'email' for faster new account validation //
 		accounts.createIndex({user: 1, email: 1});
-		console.log('mongo :: connected to database :: "'+process.env.DB_NAME+'"');
+		console.log('mongo :: connected to database :: ');
 	}
 });
 

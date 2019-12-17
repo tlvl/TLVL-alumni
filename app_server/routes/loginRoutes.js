@@ -59,9 +59,9 @@ const EM = require('../modules/email-dispatcher');
 		});
 	});
 
-	router.post('/logout', function(req, res){
+	router.get('/logout', function(req, res){
 		res.clearCookie('login');
-		req.session.destroy(function(e){ res.status(200).send('ok'); });
+		req.session.destroy();
 	});
 
 /*
