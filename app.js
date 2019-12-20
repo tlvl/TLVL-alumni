@@ -8,10 +8,14 @@ const apiRouter = require('./app_api/routes');
 const siteRouter = require('./app_server/routes/index');
 require('./db');
 const app = express();
+const hbs = require('hbs');
+
+hbs.registerPartials(path.join(__dirname, 'app_server', 'views', 'partials'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'hbs');
+
 
 
 app.use(logger('dev'));
