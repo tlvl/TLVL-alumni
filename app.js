@@ -4,15 +4,16 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const mongoose = require('mongoose');
+require('./db');
+const session = require('express-session');
+const passport = require('passport');
+require('./config/passport');
 
 const apiRouter = require('./app_api/routes');
 const siteRouter = require('./app_server/routes/index');
 
-const mongoose = require('mongoose');
-require('./db');
 const app = express();
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
 
 const hbs = require('hbs');
 hbs.registerPartials(path.join(__dirname, 'app_server', 'views', 'partials'));
@@ -27,13 +28,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-	secret: 'faeb4453e5d14fe6f6d04637f78077c76c73d1b4',
-	proxy: true,
-	resave: true,
-	saveUninitialized: true,
-	store: new MongoStore({ mongooseConnection: mongoose.connection })
-	})
-);
+  secret: 'thequickbrownfoxjumpsoverthelazydog',
+  resave: false,
+  saveUninitialized: false,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/api', apiRouter);
 app.use('/', siteRouter);
