@@ -1,19 +1,19 @@
 const router = require('express').Router();
-const loginRoutes = require('./loginRoutes');
+const connect = require('connect-ensure-login');
+
+const authenticationRoutes = require('./authenticationRoutes');
 const userRoutes = require('./userRoutes');
 
-const locations = require('../controllers/locations');
+const locations = require('../controllers/locationsController');
 const others = require('../controllers/others');
 
-router.use('/', loginRoutes);
+router.use('/', authenticationRoutes);
 router.use('/users', userRoutes);
 
 /* GET index page. */
-router.get('/', locations.homePage);
 router.get('/map', others.mapPage);
 router.get('/about', others.aboutPage);
-router.get('/reg', others.regPage);
-router.get('/login', others.loginPage);
-router.get('/user', others.userPage);
+router.get('/signup', others.signupPage);
+router.get('/user', connect.ensureLoggedIn(), others.userPage);
 
 module.exports = router;
