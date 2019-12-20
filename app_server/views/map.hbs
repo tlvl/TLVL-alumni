@@ -1,4 +1,3 @@
-  
 <div style="background-color:#F8F9FA;">
  <!–– NAVBAR––>
   {{>navbar map='active'}}
@@ -104,7 +103,7 @@
   <!–– END OF FOOTER––>
 <script>
 
-      let Locations = [{
+      let Location = [{
     "locationId": 1,
       "location": "Tallinn",
       "lat": 58.595,
@@ -205,6 +204,8 @@
    <script type="text/javascript">
     /* MAP */
 
+     
+
     var mymap = L.map('mapid').setView([58.595, 25.014], 3);
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -216,20 +217,6 @@
     accessToken: 'sk.eyJ1Ijoibm9ub2Jpc2hhIiwiYSI6ImNqd201enF3eDF1YnQ0NG8ydTd5cDhkajcifQ.bk0jp5sFLvNJPYTis0Xi_A'
 }).addTo(mymap);
    
-       let CountriesList = Locations;
-      
-      
-      function SetCountries() {
-       for (let Country of CountriesList) {
-       let marker = L.marker([Country.lat, Country.lon]).addTo(mymap);
-    
-       marker.bindPopup("<strong>"+ Country.location + "</strong><br />"+ Country.count +" Выпускника").openPopup();
-       marker.addEventListener("popupopen", () => { updateAlumniList(Country.locationId);});
-       }
-      }
-      
-      SetCountries();
-
       function mockAlumniList(cityId) {
       switch(cityId){
       case(1): return Tallinn; 
@@ -305,5 +292,19 @@
     /* END OF MAP */
 
    </script>
+{{#each locations.locations as |item i|}}
 
+  <script>
+      for(let x =0;x <= parseInt("{{i}}"); x++) {
+         SetCountry();
+      }
+      function SetCountry() {
+  	let v = L.marker([parseInt("{{item.lat}}"), parseInt("{{item.lng}}")]).addTo(mymap); 
+  v.bindPopup("<strong>"+ JSON.stringify("{{item.location_name}}")+ "</strong><br />"+ JSON.stringify("{{item.alumni_count}}") +" Выпускника").openPopup();
+ v.addEventListener("popupopen", () => { updateAlumniList(parseInt("{{i}}"));});
+ console.log(parseInt("{{i}}"));
+}
+</script>
+
+{{/each}}
 </div>
