@@ -10,6 +10,7 @@ const register = (req, res) => {
   }
 
   const user = new User();
+  user.full
   user.email = req.body.email;
   user.setPassword(req.body.password);
   user.save((err) => {

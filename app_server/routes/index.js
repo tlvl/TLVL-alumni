@@ -2,12 +2,13 @@ const router = require('express').Router();
 const connect = require('connect-ensure-login');
 
 const authenticationRoutes = require('./authenticationRoutes');
+const mapController = require('../controllers/mapController');
 const others = require('../controllers/others');
 
 router.use('/', authenticationRoutes);
 
 /* GET index page. */
-router.get('/map', others.mapPage);
+router.get('/map', others.mapList);
 router.get('/about', others.aboutPage);
 router.get('/signup', others.signupPage);
 router.get('/login', others.loginPage);

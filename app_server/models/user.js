@@ -17,6 +17,7 @@ const userSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
+    // TODO: city
     location: {
       lat: {
         type: Number,

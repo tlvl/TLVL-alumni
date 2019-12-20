@@ -1,20 +1,3 @@
-<<<<<<< .merge_file_a13576
-
-const mapPage = (req, res) => {
-  if (req.user) {
-    res.render('map', {
-      title: 'Map',
-      user: req.user,
-      full: true,
-    });
-  } else {
-    res.render('map', {
-      title: 'Map',
-      full: false,      
-    })
-  };
-=======
-const locations = './api/locations';
 const request = require('request');
 const apiOptions = {
   server : 'http://localhost:3000'
@@ -29,7 +12,6 @@ const renderMap = function(req, res, responseBody) {
         locations: responseBody
         });
 };
-
 
 const mapList = function(req, res){
   const path = '/api/locations';
@@ -54,36 +36,25 @@ const mapList = function(req, res){
       renderMap(req, res, data);
     }
   );
->>>>>>> .merge_file_a00856
 };
 
 const aboutPage = (req, res) => {
   res.render('about', {title: 'About'})
 };
 const signupPage = (req, res) => {
-  res.render('signup', {title: 'Registration'})
+  res.render('signup', {title: 'Sign up'})
 };
 const loginPage = (req, res) => {
   res.render('login', {title: 'Login'})
 };
-<<<<<<< .merge_file_a13576
 const userPage = (req, res) => {
-  res.render('user', {title: 'User'})
+  res.render('user', {title: 'My account'})
 };
-=======
->>>>>>> .merge_file_a00856
 
 module.exports = {
-    mapList,
-    aboutPage,
-<<<<<<< .merge_file_a13576
-    signupPage,
-    loginPage,
-	userPage
+  aboutPage,
+  signupPage,
+  loginPage,
+  userPage,
+  mapList,
 };
-=======
-    regPage,
-    loginPage
-};
-
->>>>>>> .merge_file_a00856
