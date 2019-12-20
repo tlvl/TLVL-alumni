@@ -228,8 +228,8 @@
 
 
 
-         <input type="hidden" name="realAddr" value="" id="realAddr" class ="realAddr" size="10" / >
- 
+         <input type="hidden" name="lat" value="" id="lat" class ="lat" size="10" / >
+   <input type="hidden" name="lon" value="" id="lon" class ="lon" size="10" / >
 
 
     </form>
@@ -245,6 +245,8 @@ function chooseAddr(lat1, lng1, lat2, lng2, osm_type) {
     $('#results').empty();
     $('<b>', { html: "Вы выбрали адрес: " + osm_type }).appendTo('#results');
     $("#realAddr").val(lat1 + "/" +  lng1);
+	$("#lat").val(lat1);
+	$("#lon").val(lng1);
 
 }
 
