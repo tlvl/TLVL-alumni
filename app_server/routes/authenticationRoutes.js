@@ -16,16 +16,31 @@ router.get('/logout', (req, res) => {
 });
 
 router.post('/signup', (req, res) => {
-  if (!req.body.email || !req.body.password) {
+  if (!req.body.email || !req.body.password || !req.body.firstName || !req.body.lastName || !req.body.role) {
     return res
       .status(400)
       .json({"message": "All fields required"});
   } else {
-    const user = new User();
-    user.fullName = req.body.fullName;
+  const user = new User();
+    user.firstName = req.body.firstName;
+    user.lastName = req.body.lastName;
     user.email = req.body.email;
-    // TODO: assign other options
-    // user.location = {lat: , lon: }
+    user.teacherName = req.body.teacherName;
+    user.workScope = req.body.workScope;
+    user.greeting = req.body.greeting;
+    user.role = req.body.role;
+    user.address.location = {
+    lat: req.body.lat,
+    lon: req.body.lon
+  }
+    const realCity = nearestCities(parseFloat(req.body.lat), parseFloat(req.body.lon));
+    user.address.country = realCity[0].country; 
+    user.addressForMap.country = realCity[0].country;
+    user.addressForMap.location = {
+      lat: realCity[0].lat,
+      lon: realCity[0].lon,
+    };
+ 
     user.setPassword(req.body.password);
 
     console.log(user.salt);

@@ -12,7 +12,39 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  teacherName: {
+    type: String,
+    trim: true,
+  },
+  workScope: {
+    type: String,
+    trim: true,
+  },
+  greeting: {
+    type: String,
+    trim: true,
+  },
+   role: {
+    type: String,
+  },
   address: {
+    country: {
+      type: String,
+      required: true,
+    },
+    // TODO: city
+    location: {
+      lat: {
+        type: Number,
+        required: true,
+      },
+      lon: {
+        type: Number,
+        required: true,
+      },
+    },
+  },
+   addressForMap: {
     country: {
       type: String,
       required: true,
