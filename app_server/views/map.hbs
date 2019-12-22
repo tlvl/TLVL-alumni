@@ -1,28 +1,15 @@
 <div style="background-color:#F8F9FA;">
- <!–– NAVBAR––>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">TLVL</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="map">Карта<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="about">О сайте</a>
-      <a class="nav-item nav-link" href="reg">Регистрация</a>
-      <a class="nav-item nav-link" href="login">Вход</a>
-    </div>
-  </div>
-</nav>
+  <!–– NAVBAR––>
+  {{>navbar map='active'}}
  <!–– END OF NAVBAR––>
 
  <!–– MAP––>
   <div class = "container-fluid mr-3">
    <div id="mapid">
-    </div>
-</div>
+   </div>
+  </div>
  <!–– END OF MAP––>
-
+<!--
  <!–– GRADUATES LIST––>
 
 <div class = "container-fluid mr-3 mt-3">
@@ -85,18 +72,18 @@
   <li class="list-group-item">Маслов Панкрат</li>
 </ul> 
 </div>
-<div class = "col-6 border" id = "alum-view">
+<div class = "col-6 border" id = "alum-view" style="height: 580px;">
 <div class = "container text-center align-center" id="alum-container">
    <h1>Коля Зей</h1>
    <hr/>
-         <dl style="font-size:3vw;">
+         <dl style="">
     <dt>Закончил школу в:</dt>
     <dd>- 1995 году</dd>
     <dt>Классный руководитель:</dt>
     <dd>- Цезарь</dd>
      <dt>Сейчас живёт в:</dt>
     <dd>- Риме</dd>
-     <dt>Работает:</dt>z
+     <dt>Работает:</dt>
     <dd>-Достопримечательностью</dd>
   </dl>  
 </div>
@@ -104,16 +91,16 @@
 </div>
 </div>
  <!–– END OF GRADUATES LIST––>
-
+-->
  <!–– FOOTER––>
-
  <footer class="page-footer font-small blue">
-
-  <div class="footer-copyright text-center py-3"> <b>2019</b> Таллиннский Линнамяэский Русский Лицей:
-    <a href="http://www.linnamae.tln.edu.ee/ "> http://www.linnamae.tln.edu.ee/ </a>
-  </div>
-</footer>
-  <!–– END OF FOOTER––>
+   <div class="footer-copyright text-center py-3"> 
+                  <b>2019</b>
+     Таллиннский Линнамяэский Русский Лицей:
+     <a href="http://www.linnamae.tln.edu.ee/"> http://www.linnamae.tln.edu.ee/ </a>
+   </div>
+  </footer>
+ <!–– END OF FOOTER––>
 <script>
 
       let Location = [{
@@ -289,7 +276,7 @@
           $("#alum-view").append(`<div class = "container text-center align-center" id="alum-container">
            <h1>${alum.first_name} ${alum.last_name}</h1>
    <hr/>
-         <dl style="font-size:3vw;">
+         <dl style="">
     <dt>Закончил школу в:</dt>
     <dd>- ${alum.graduate}</dd>
     <dt>Классный руководитель:</dt>

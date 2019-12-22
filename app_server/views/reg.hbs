@@ -1,21 +1,6 @@
-
-   
 <div style="background-color:#F8F9FA;">
  <!–– NAVBAR––>
-     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">TLVL</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-<a class="nav-item nav-link " href="map">Карта</a>
-      <a class="nav-item nav-link" href="about">О сайте</a>
-      <a class="nav-item nav-link active" href="reg">Регистрация<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="login">Вход</a>
-    </div>
-  </div>
-</nav>
+ {{>navbar reg='active'}}
  <!–– END OF NAVBAR––>
 
   <!–– REGISTRATION FORM––>
@@ -228,8 +213,8 @@
 
 
 
-         <input type="hidden" name="realAddr" value="" id="realAddr" class ="realAddr" size="10" / >
- 
+         <input type="hidden" name="lat" value="" id="lat" class ="lat" size="10" / >
+   <input type="hidden" name="lon" value="" id="lon" class ="lon" size="10" / >
 
 
     </form>
@@ -245,6 +230,8 @@ function chooseAddr(lat1, lng1, lat2, lng2, osm_type) {
     $('#results').empty();
     $('<b>', { html: "Вы выбрали адрес: " + osm_type }).appendTo('#results');
     $("#realAddr").val(lat1 + "/" +  lng1);
+	$("#lat").val(lat1);
+	$("#lon").val(lng1);
 
 }
 
