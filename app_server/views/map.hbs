@@ -335,12 +335,14 @@ $('#alum-view').empty();
 {{#each locations.locations as |item i|}}
 
   <script>
+
       for(let x =0;x <= parseInt("{{i}}"); x++) {
          SetCountry();
       }
       function SetCountry() {
+	 
   	let v = L.marker([parseInt("{{item.lat}}"), parseInt("{{item.lng}}")]).addTo(mymap); 
-  v.bindPopup("<strong>"+ JSON.stringify("{{item.location_name}}")+ "</strong><br />"+ JSON.stringify("{{item.alumni_count}}") +" Выпускника").openPopup();
+  v.bindPopup("<strong>"+ JSON.stringify("{{item.location_name}}").replace(/['"]+/g, '') + "</strong><br />"+ JSON.stringify("{{item.alumni_count}}").replace(/['"]+/g, '') +" Выпускника").openPopup();
  v.addEventListener("popupopen", () => { updateAlumniList(parseInt("{{i}}"));});
  console.log(parseInt("{{i}}"));
 }
