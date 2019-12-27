@@ -8,9 +8,10 @@ if (process.env.NODE_ENV === 'production') {
 
 const renderMap = function(req, res, responseBody) {
 	res.render('map', {
-		title: 'Map',
-        locations: responseBody
-        });
+    title: 'Map',
+    user: req.user,
+    locations: responseBody,
+  });
 };
 
 const mapList = function(req, res){
@@ -39,16 +40,28 @@ const mapList = function(req, res){
 };
 
 const aboutPage = (req, res) => {
-  res.render('about', {title: 'About'})
+  res.render('about', {
+    title: 'About',
+    user: req.user,
+  });
 };
 const signupPage = (req, res) => {
-  res.render('signup', {title: 'Sign up'})
+  res.render('signup', {
+    title: 'Sign up',
+    user: req.user,
+  });
 };
 const loginPage = (req, res) => {
-  res.render('login', {title: 'Login'})
+  res.render('login', {
+    title: 'Login',
+    user: req.user,
+  });
 };
 const userPage = (req, res) => {
-  res.render('user', {title: 'My account'})
+  res.render('user', {
+    title: 'My account',
+    user: req.user,
+  });
 };
 
 module.exports = {
