@@ -8,6 +8,7 @@ router.use(passport.initialize());
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login',
+  failureFlash: true,
 }));
 
 router.get('/logout', (req, res) => {

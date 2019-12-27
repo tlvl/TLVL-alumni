@@ -55,6 +55,7 @@ const loginPage = (req, res) => {
   res.render('login', {
     title: 'Login',
     user: req.user,
+    flash: req.flash('error'),
   });
 };
 const userPage = (req, res) => {

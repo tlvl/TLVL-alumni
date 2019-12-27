@@ -4,9 +4,9 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const mongoose = require('mongoose');
 require('./db');
 const session = require('express-session');
+const flash = require('connect-flash');
 const passport = require('passport');
 require('./config/passport');
 
@@ -33,6 +33,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
 }));
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
