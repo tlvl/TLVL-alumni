@@ -58,17 +58,10 @@ const loginPage = (req, res) => {
     flash: req.flash('error'),
   });
 };
-const userPage = (req, res) => {
-  res.render('user', {
-    title: 'My account',
-    user: req.user,
-  });
-};
 
 module.exports = {
   aboutPage,
   signupPage,
   loginPage,
-  userPage,
   mapList,
 };

@@ -1,33 +1,41 @@
   
 <div style="background-color:#F8F9FA;">
- <!–– NAVBAR––>
-  {{>navbar account='active'}}
- <!–– END OF NAVBAR––>
+<!–– NAVBAR––>
+{{>navbar account='active'}}
+<!–– END OF NAVBAR––>
  
 <!–– CHANGE CREDENTIALS FORM––>
- <div class="container border" >
+<div class="container border" >
  
-   <!–– CHANGE EMAIL FORM––>
-    <form class="form-horizontal " role="form" method="POST" action="/changeEmail">
-	   <div class = "row mt-3">
-	   <div class = "col-md-3 ">
-	     Смена E-mail: 	 
-		 </div>
-		  <div class = "col-md-6 ">
-		 <input type="text"  name="name" class="form-control" id="name" placeholder="Введите новый E-mail">
-		 </div>
-		 <div class = "col-md-3 ">
-	    <button type="button" class = "btn btn-primary">
-	   Сменить
-	   </button>
-	   </div>
-		  </div>
-      </form>
-       <!–– END OF CHANGE EMAIL FORM––>
+  <!–– CHANGE EMAIL FORM––>
+  <form class="form-horizontal " role="form" method="POST" action="/account/changeEmail">
+    <div class = "row mt-3">
+	  <div class = "col-md-3">
+	    Текущий E-mail: 	 
+	  </div>
+	  <div class = "col-md-9">
+	    {{user.email}}
+	  </div>
+	</div>
+	<div class = "row mt-3">
+	  <div class = "col-md-3 ">
+	    Смена E-mail: 	 
+	  </div>
+	  <div class = "col-md-6 ">
+	    <input type="text"  name="name" class="form-control" id="name" placeholder="Введите новый E-mail">
+	  </div>
+	  <div class = "col-md-3 ">
+	    <button type="submit" class = "btn btn-primary">
+	      Сменить
+	    </button>
+	  </div>
+	</div>
+  </form>
+  <!–– END OF CHANGE EMAIL FORM––>
 	  
 	  
 	    <!–– CHANGE PASSWORD FORM––>
-	  <form class="form-horizontal " role="form" method="POST" action="/changePassword">
+	  <form class="form-horizontal " role="form" method="POST" action="/account/changePassword">
 	   <div class = "row mt-3">
 	   <div class = "col-md-3 ">
 	     Смена пароля: 	 
@@ -45,7 +53,7 @@
 	  <!–– END OF CHANGE PASSWORD FORM––>
 	  
 	  <!–– CHANGE TEACHER FORM––>
-	  <form class="form-horizontal " role="form" method="POST" action="/changeTeacher">
+	  <form class="form-horizontal " role="form" method="POST" action="/account/changeTeacher">
 	   <div class = "row mt-3">
 	   <div class = "col-md-3 ">
 	     Смена учителя:
@@ -63,7 +71,7 @@
 	  <!–– END OF CHANGE TEACHER FORM––>
 	  
 	    <!–– CHANGE JOB FORM––>
-	  <form class="form-horizontal " role="form" method="POST" action="/changeJob">
+	  <form class="form-horizontal " role="form" method="POST" action="/account/changeJob">
 	   <div class = "row mt-3">
 	   <div class = "col-md-3 ">
 	     Смена работы: 	 
@@ -81,7 +89,7 @@
 	  <!–– END OF CHANGE JOB FORM––>
 	  
 	      <!–– CHANGE WISH FORM––>
-	  <form class="form-horizontal " role="form" method="POST" action="/changeJob">
+	  <form class="form-horizontal " role="form" method="POST" action="/account/changeJob">
 	   <div class = "row mt-3">
 	   <div class = "col-md-3 ">
 	     Смена пожелания: 	 
@@ -100,7 +108,7 @@
 	  <!–– END OF WISH FORM––>
 	  
 	   <!–– ADDRESS CHANGE FORM––>
-	  <form class="form-horizontal mt-3" role="form" method="POST" action="/changeLocation">
+	  <form class="form-horizontal mt-3" role="form" method="POST" action="/account/changeLocation">
 	   <div class="row">
             <div class="col-md-3 field-label-responsive">
                 <label for="name">Город в котором находитесь</label>
@@ -123,7 +131,7 @@
             <div class="col-md-3">
                 <div class="form-control-feedback">
                         <span class="text-danger align-middle">
-                            <!-- Put name validation error messages here -->
+                            <!-- Put validation error messages here -->
                         </span>
                 </div>
             </div>
