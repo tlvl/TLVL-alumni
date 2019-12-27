@@ -1,0 +1,193 @@
+  
+<div style="background-color:#F8F9FA;">
+ <!–– NAVBAR––>
+  {{>navbar account='active'}}
+ <!–– END OF NAVBAR––>
+ 
+<!–– CHANGE CREDENTIALS FORM––>
+ <div class="container border" >
+ 
+   <!–– CHANGE EMAIL FORM––>
+    <form class="form-horizontal " role="form" method="POST" action="/changeEmail">
+	   <div class = "row mt-3">
+	   <div class = "col-md-3 ">
+	     Смена E-mail: 	 
+		 </div>
+		  <div class = "col-md-6 ">
+		 <input type="text"  name="name" class="form-control" id="name" placeholder="Введите новый E-mail">
+		 </div>
+		 <div class = "col-md-3 ">
+	    <button type="button" class = "btn btn-primary">
+	   Сменить
+	   </button>
+	   </div>
+		  </div>
+      </form>
+       <!–– END OF CHANGE EMAIL FORM––>
+	  
+	  
+	    <!–– CHANGE PASSWORD FORM––>
+	  <form class="form-horizontal " role="form" method="POST" action="/changePassword">
+	   <div class = "row mt-3">
+	   <div class = "col-md-3 ">
+	     Смена пароля: 	 
+		 </div>
+		  <div class = "col-md-6 ">
+		 <input type="text"  name="name" class="form-control" id="name" placeholder="Введите новый пароль">
+		 </div>
+		 <div class = "col-md-3 ">
+	     <button type="button" class = "btn btn-primary">
+	   Сменить
+	   </button>
+	   </div>
+		  </div>
+      </form>
+	  <!–– END OF CHANGE PASSWORD FORM––>
+	  
+	  <!–– CHANGE TEACHER FORM––>
+	  <form class="form-horizontal " role="form" method="POST" action="/changeTeacher">
+	   <div class = "row mt-3">
+	   <div class = "col-md-3 ">
+	     Смена учителя:
+		 </div>
+		  <div class = "col-md-6 ">
+		 <input type="text"  name="name" class="form-control" id="name" placeholder="Введите нового учителя">
+		 </div>
+		 <div class = "col-md-3 ">
+	     <button type="button" class = "btn btn-primary">
+	   Сменить
+	   </button>
+	   </div>
+		  </div>
+      </form>
+	  <!–– END OF CHANGE TEACHER FORM––>
+	  
+	    <!–– CHANGE JOB FORM––>
+	  <form class="form-horizontal " role="form" method="POST" action="/changeJob">
+	   <div class = "row mt-3">
+	   <div class = "col-md-3 ">
+	     Смена работы: 	 
+		 </div>
+		  <div class = "col-md-6 ">
+		 <input type="text"  name="name" class="form-control" id="name" placeholder="Введите новую область деятельности">
+		 </div>
+		 <div class = "col-md-3 ">
+	  <button type="button" class = "btn btn-primary">
+	   Сменить
+	   </button>
+	   </div>
+		  </div>
+      </form>
+	  <!–– END OF CHANGE JOB FORM––>
+	  
+	      <!–– CHANGE WISH FORM––>
+	  <form class="form-horizontal " role="form" method="POST" action="/changeJob">
+	   <div class = "row mt-3">
+	   <div class = "col-md-3 ">
+	     Смена пожелания: 	 
+		 </div>
+		  <div class = "col-md-6 ">
+		 <textarea type="text"  name="name" class="form-control" id="name" placeholder="Введите новое пожелание"> </textarea>
+		 </div>
+		 <div class = "col-md-3 ">
+	   <button type="button" class = "btn btn-primary">
+	   Сменить
+	   </button>
+	   </div>
+		  </div>
+      </form>
+      <hr/>
+	  <!–– END OF WISH FORM––>
+	  
+	   <!–– ADDRESS CHANGE FORM––>
+	  <form class="form-horizontal mt-3" role="form" method="POST" action="/changeLocation">
+	   <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="name">Город в котором находитесь</label>
+            </div>
+            <div class="col-md-6">
+      
+        
+        <div id="search" class = "form-group"  required>
+            <div class="row">
+            <div class = "col-md-6">
+            <input type="text" name="addr" value="" id="addr" class ="addr form-control" size="10" />
+        </div>
+        <div class = "col-md-6">
+            <button type="button" class="btn btn-info" onclick="addr_search();">Поиск</button>
+            </div>
+        </div>
+            <div id="results"/>
+        </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <!-- Put name validation error messages here -->
+                        </span>
+                </div>
+            </div>
+        </div>
+		<div class="row">
+            <div class="ml-3"></div>
+            <div class="ml-4 text-center">
+                <button type="submit" class="btn btn-primary"> Сменить</button>
+            </div>
+        </div>
+ 
+
+
+         <input type="hidden" name="realAddr" value="" id="realAddr" class ="realAddr" size="10" / >
+   </form>
+    <!–– END OF ADDRESS CHANGE FORM––>
+
+
+</div>
+  <!–– END OF CHANGE CREDENTIALS FORM––>
+<script>
+       
+function chooseAddr(lat1, lng1, lat2, lng2, osm_type) {
+    console.log(lat1 + "/" + lng1);
+    $('#results').empty();
+    $('<b>', { html: "Вы выбрали адрес: " + osm_type }).appendTo('#results');
+    $("#realAddr").val(lat1 + "/" +  lng1);
+
+}
+
+function addr_search() {
+    var inp = document.getElementById("addr");
+
+    $.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + inp.value, function(data) {
+        var items = [];
+
+        $.each(data, function(key, val) {
+            bb = val.boundingbox;
+            items.push("<li><a href='#' onclick='chooseAddr(" + bb[0] + ", " + bb[2] + ", " + bb[1] + ", " + bb[3]  + ", \"" + val.display_name + "\");return false;'>" + val.display_name + '</a></li>');
+        });
+
+
+        $('#results').empty();
+        if (items.length != 0) {
+            $('<p>', { html: "Нажмите на адрес, чтобы выбрать:" }).append('#results');
+            $('<ul/>', {
+                'class': 'my-new-list',
+                html: items.join('')
+            }).appendTo('#results');
+        } else {
+            $('<p>', { html: "Город не найден." }).append('#results');
+        }
+    });
+}
+
+    </script>
+ <!–– FOOTER––>
+
+ <footer class="page-footer font-small blue">
+
+  <div class="footer-copyright text-center py-3"> <b>2019</b> Таллиннский Линнамяэский Русский Лицей:
+    <a href="http://www.linnamae.tln.edu.ee/ "> http://www.linnamae.tln.edu.ee/ </a>
+  </div>
+</footer>
+  <!–– END OF FOOTER––>
+ 
+</div>

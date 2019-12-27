@@ -10,88 +10,6 @@
   </div>
  <!–– END OF MAP––>
 
- <!–– GRADUATES LIST––>
-<!--
-<div class = "container-fluid mr-3 mt-3">
-    <div class="row"> <div class ="col-12 text-center"> <b> ВЫПУСКНИКИ <select class="form-control text-center"  id="mySelect">
-    <option value="2018">2018</option>
-    <option value="2017">2017</option>
-    <option value="2016">2016</option>
-    <option value="2015">2015</option>
-    <option value="2014">2014</option>
-    <option value="2013">2013</option>
-    <option value="2012">2012</option>
-    <option value="2011">2011</option>
-    <option value="2010">2010</option>
-    <option value="2009">2009</option>
-    <option value="2008">2008</option>
-    <option value="2007">2007</option>
-    <option value="2006">2006</option>
-    <option value="2005">2005</option>
-    <option value="2004">2004</option>
-    <option value="2003">2003</option>
-    <option value="2002">2002</option>
-    <option value="2001">2001</option>
-    <option value="2000">2000</option>
-    <option value="1999">1999</option>
-    <option value="1998">1998</option>
-    <option value="1997">1997</option>
-    <option value="1996">1996</option>
-    <option value="1995">1995</option>
-    <option value="1994">1994</option>
-    <option value="1993">1993</option>
-    <option value="1992">1992</option>
-    <option value="1991">1991</option>
-    <option value="1990">1990</option>
-    <option value="1989">1989</option>
-    </select>
-    <button type="button" class="btn btn-primary" onclick="setYear()">Искать!</button>
- </b></div> </div>
-    <div class = "row">
-    <div class = "col-6 overflow-auto" style="height: 580px;">
- <ul class="list-group members" id = "alumni">
-  <li class="list-group-item">Павел Смирнов</li>
-  <li class="list-group-item">Александр Иванов</li>
-  <li class="list-group-item">Анастасия Зайцева</li>
-  <li class="list-group-item">Милена Давыдова</li>
-  <li class="list-group-item active">Коля Зей</li>
-  <li class="list-group-item">Дарья Гусева</li>
-  <li class="list-group-item">Тимур Быков</li>
-  <li class="list-group-item">Сергей Кириллов</li>
-  <li class="list-group-item">Ситников Петр</li>
-  <li class="list-group-item">Суворов Артем</li>
-  <li class="list-group-item">Авдеев Бронислав </li>
-  <li class="list-group-item">Галкин Ярослав</li>
-  <li class="list-group-item">Брагин Николай</li>
-  <li class="list-group-item">Кулаков Евгений</li>
-  <li class="list-group-item">Комаров Пантелей</li>
-  <li class="list-group-item">Якушев Артур</li>
-  <li class="list-group-item">Мишин Юлий </li>
-  <li class="list-group-item">Романов Мирон</li>
-  <li class="list-group-item">Селиверстов Эрнест</li>
-  <li class="list-group-item">Маслов Панкрат</li>
-</ul> 
-</div>
-<div class = "col-6 border" id = "alum-view" style="height: 580px;">
-<div class = "container text-center align-center" id="alum-container">
-   <h1>Коля Зей</h1>
-   <hr/>
-         <dl style="">
-    <dt>Закончил школу в:</dt>
-    <dd>- 1995 году</dd>
-    <dt>Классный руководитель:</dt>
-    <dd>- Цезарь</dd>
-     <dt>Сейчас живёт в:</dt>
-    <dd>- Риме</dd>
-     <dt>Работает:</dt>
-    <dd>-Достопримечательностью</dd>
-  </dl>  
-</div>
-</div>
-</div>
-</div>
- <!–– END OF GRADUATES LIST––>
--->
  <!–– FOOTER––>
  <footer class="page-footer font-small blue">
    <div class="footer-copyright text-center py-3"> 
@@ -206,6 +124,8 @@
 $('#alum-view').empty();
      
 
+     
+
     var mymap = L.map('mapid').setView([58.595, 25.014], 3);
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -213,6 +133,7 @@ $('#alum-view').empty();
     maxZoom: 18,
     minZoom:2,
     id: 'mapbox.streets',
+	
     accessToken: 'sk.eyJ1Ijoibm9ub2Jpc2hhIiwiYSI6ImNqd201enF3eDF1YnQ0NG8ydTd5cDhkajcifQ.bk0jp5sFLvNJPYTis0Xi_A'
 }).addTo(mymap);
    
@@ -242,23 +163,6 @@ $('#alum-view').empty();
       }
     }
 
-
-     /* function updateAlumniList(locationId, year) {
-      console.log(locationId);
-      $('#alumni').empty();
-      let alumniList = mockAlumniList(locationId); // GET query to tlvl-alumni.site/api/alumni/city
-      for (let alum of alumniList) {
-        $('#alumni').append(`<li class="list-group-item" style = "cursor:pointer;"
-        id="alum-${alum.id}">
-        ${alum.first_name} ${alum.last_name}</li>`);
-        $(`#alum-${alum.id}`).click(() => {
-          updateAlumniView(alum.id);
-          $('.list-group-item').removeClass('active');
-          $(`#alum-${alum.id}`).addClass('active');
-        });
-      }
-    }
-    */
     function mockAlumnusById(alumId) {
      switch(alumId){
       case(1): return Tallinn; 
@@ -273,10 +177,10 @@ $('#alum-view').empty();
       for(let alum of alumView) {
         if(alum.id == alumId) {
 
-          $("#alum-view").append(`<div class = "container text-center align-center" id="alum-container">
+          $("#alum-view").append(`<div class = "container text-center align-center display-4" id="alum-container">
            <h1>${alum.first_name} ${alum.last_name}</h1>
    <hr/>
-         <dl style="">
+         <dl>
     <dt>Закончил школу в:</dt>
     <dd>- ${alum.graduate}</dd>
     <dt>Классный руководитель:</dt>
@@ -307,35 +211,10 @@ $('#alum-view').empty();
 })
     /* END OF MAP */
 
-    /* GRADUATERS */
-    /*
-    function myFunction() {
-     var x = document.getElementById("mySelect").selectedIndex;
-
-    var answers = data;
-    for(var i = 0; i < answers.length; i++) {
-        var row_data = "";
-        if(answers[i].graduate == document.getElementsByTagName("option")[x].value) {
-            var row_data = "";
-    
-         var row_data = row_data + "  " + answers[i].first_name;
-          }
-
-  
-           var element = document.createElement('li');
-         element.classList.add("list-group-item");
-         element.innerHTML = row_data;
-          document.getElementById("alumni").appendChild(element);
-      console.log(answers[i].first_name);
-       }
-    
-    }
-    */
    </script>
 {{#each locations.locations as |item i|}}
 
   <script>
-
       for(let x =0;x <= parseInt("{{i}}"); x++) {
          SetCountry();
       }

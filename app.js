@@ -4,18 +4,22 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+require('./db');
+const session = require('express-session');
+const flash = require('connect-flash');
+const passport = require('passport');
+require('./config/passport');
+
 const apiRouter = require('./app_api/routes');
 const siteRouter = require('./app_server/routes/index');
-require('./db');
+
 const app = express();
 const hbs = require('hbs');
 
 hbs.registerPartials(path.join(__dirname, 'app_server', 'views', 'partials'));
-
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'hbs');
-
 
 
 app.use(logger('dev'));
@@ -23,6 +27,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: 'thequickbrownfoxjumpsoverthelazydog',
+  resave: false,
+  saveUninitialized: false,
+}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/api', apiRouter);
 app.use('/', siteRouter);
