@@ -169,7 +169,8 @@
         <div id="search" class = "form-group" style="margin-left:  2.6rem" required>
             <div class="row">
             <div class = "col-md-6">
-            <input type="text" name="addr" value="" id="addr" class ="addr form-control" size="10" />
+            <input type="text" required name="addr" value="" id="addr" class ="addr form-control" size="10" oninvalid="this.setCustomValidity('Город обязателен')"
+ oninput="setCustomValidity('')" />
         </div>
         <div class = "col-md-6">
             <button type="button" class="btn btn-info" onclick="addr_search();">Поиск</button>
