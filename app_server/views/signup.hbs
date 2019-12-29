@@ -1,9 +1,7 @@
 <div style="background-color:#F8F9FA;">
- <!–– NAVBAR––>
- {{>navbar reg='active'}}
- <!–– END OF NAVBAR––>
 
-  <!–– REGISTRATION FORM––>
+ {{>navbar reg='active'}}
+
  <div class="container">
     <form class="form-horizontal" role="form" method="POST" action="/signup">
         <div class="row">
@@ -235,15 +233,8 @@
             </div>
         </div>
 
-
-
-<<<<<<< HEAD:app_server/views/reg.hbs
-         <input type="hidden" name="lat" value="" id="lat" class ="lat" size="10" / >
-=======
-        
-   <input type="hidden" name="lat" value="" id="lat" class ="lat" size="10" / >
->>>>>>> dev-register:app_server/views/signup.hbs
-   <input type="hidden" name="lon" value="" id="lon" class ="lon" size="10" / >
+  <input type="hidden" name="lat" value="" id="lat" class ="lat" size="10">
+  <input type="hidden" name="lon" value="" id="lon" class ="lon" size="10">
 
 
     </form>
@@ -258,14 +249,9 @@ function chooseAddr(lat1, lng1, lat2, lng2, osm_type) {
     console.log(lat1 + "/" + lng1);
     $('#results').empty();
     $('<b>', { html: "Вы выбрали адрес: " + osm_type }).appendTo('#results');
-<<<<<<< HEAD:app_server/views/reg.hbs
     $("#realAddr").val(lat1 + "/" +  lng1);
 	$("#lat").val(lat1);
 	$("#lon").val(lng1);
-=======
-    $("#lat").val(lat1);
-    $("#lon").val(lng1);
->>>>>>> dev-register:app_server/views/signup.hbs
 
 }
 
@@ -296,17 +282,6 @@ function addr_search() {
 </script>
 
 
-  <!–– END OF REGISTRATION FORM––>
+{{>footer}}
 
- <!–– FOOTER––>
-
- <footer class="page-footer font-small blue">
-
-  <div class="footer-copyright text-center py-3"> <b>2019</b> Таллиннский Линнамяэский Русский Лицей:
-    <a href="http://www.linnamae.tln.edu.ee/ "> http://www.linnamae.tln.edu.ee/ </a>
-  </div>
-
-  <!–– END OF FOOTER––>
- 
-</footer>
 </div>
