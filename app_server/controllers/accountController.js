@@ -14,16 +14,21 @@ const accountPage = (req, res) => {
 };
 
 const changeEmail = (req, res) => {
-  User.findById(req.user.id, (err, user) => {
+  User.findByIdAndUpdate(req.user.id, {
+    $set: {
+      email: req.body.email,
+    }
+  }, (err, user) => {
     if (err) {
+      console.log(err.toJSON());
       req.flash('error', 'No user found. Try logging in again');
       res.redirect('/account');
     }
     user.email = req.body.email;
-    user.save((err, user) => {
+    user.save((err) => {
       if (err) {
-        req.flash('error', 'Error updating a record. Try again later');
-        res.redirect('/account');
+        console.log(err.toJSON());
+        req.flash('error', 'Error updating data. Try again later');
       }
       res.redirect('/account');
     });
