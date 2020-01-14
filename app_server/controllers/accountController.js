@@ -25,7 +25,6 @@ const changeEmail = (req, res) => {
       req.flash('error', 'No user found. Try logging in again');
       res.redirect('/account');
     }
-    user.email = req.body.email;
     user.save((err) => {
       if (err) {
         console.log(err.toJSON());
@@ -47,7 +46,6 @@ const changeWorkScope = (req, res) => {
       req.flash('error', 'No user found. Try logging in again');
       res.redirect('/account');
     }
-    user.email = req.body.email;
     user.save((err) => {
       if (err) {
         console.log(err.toJSON());
@@ -70,7 +68,6 @@ const changeGreeting = (req, res) => {
       req.flash('error', 'No user found. Try logging in again');
       res.redirect('/account');
     }
-    user.email = req.body.email;
     user.save((err) => {
       if (err) {
         console.log(err.toJSON());
@@ -92,7 +89,6 @@ const changeTeacherName = (req, res) => {
       req.flash('error', 'No user found. Try logging in again');
       res.redirect('/account');
     }
-    user.email = req.body.email;
     user.save((err) => {
       if (err) {
         console.log(err.toJSON());
