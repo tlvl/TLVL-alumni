@@ -25,13 +25,7 @@ const changeEmail = (req, res) => {
       req.flash('error', 'No user found. Try logging in again');
       res.redirect('/account');
     }
-    user.save((err) => {
-      if (err) {
-        console.log(err.toJSON());
-        req.flash('error', 'Error updating data. Try again later');
-      }
-      res.redirect('/account');
-    });
+    res.redirect('/account');
   });
 };
 
@@ -46,15 +40,8 @@ const changeWorkScope = (req, res) => {
       req.flash('error', 'No user found. Try logging in again');
       res.redirect('/account');
     }
-    user.save((err) => {
-      if (err) {
-        console.log(err.toJSON());
-        req.flash('error', 'Error updating data. Try again later');
-      }
-      res.redirect('/account');
-    });
+    res.redirect('/account');
   });
-
 };
 
 const changeGreeting = (req, res) => {
@@ -68,13 +55,7 @@ const changeGreeting = (req, res) => {
       req.flash('error', 'No user found. Try logging in again');
       res.redirect('/account');
     }
-    user.save((err) => {
-      if (err) {
-        console.log(err.toJSON());
-        req.flash('error', 'Error updating data. Try again later');
-      }
-      res.redirect('/account');
-    });
+    res.redirect('/account');
   });
 };
 
@@ -89,52 +70,39 @@ const changeTeacherName = (req, res) => {
       req.flash('error', 'No user found. Try logging in again');
       res.redirect('/account');
     }
-    user.save((err) => {
-      if (err) {
-        console.log(err.toJSON());
-        req.flash('error', 'Error updating data. Try again later');
-      }
-      res.redirect('/account');
-    });
+    res.redirect('/account');
   });
 };
 
 const changePassword = (req, res) => {
-  User.findByIdAndUpdate(req.user.id, {
+  User.findById(req.user.id, {
   }, (err, user) => {
     if (err) {
       console.log(err.toJSON());
       req.flash('error', 'No user found. Try logging in again');
       res.redirect('/account');
     }
-    if(req.body.password === req.body.password_confirmation){
-    user.setPassword(req.body.password);
-    req.logout();
-        }
-     else {
+    if (req.body.password === req.body.password_confirmation) {
+      user.setPassword(req.body.password);
+      req.logout();
+    } else {
      	req.flash('error', 'Пароли не совпадают');
-     }   
-    user.save((err) => {
-      if (err) {
-        console.log(err.toJSON());
-        req.flash('error', 'Error updating data. Try again later');
-      }
-      res.redirect('/account');
-    });
+    }   
+    res.redirect('/account');
   });
 };
 
 const changeLocation = (req, res) => {
-  User.findByIdAndUpdate(req.user.id, {
+  User.findById(req.user.id, {
   }, (err, user) => {
     if (err) {
       console.log(err.toJSON());
       req.flash('error', 'No user found. Try logging in again');
       res.redirect('/account');
     }
-     user.address.location = {
-    lat: req.body.lat,
-    lon: req.body.lon
+    user.address.location = {
+      lat: req.body.lat,
+      lon: req.body.lon
     }
     const realCity = nearestCities(parseFloat(req.body.lat), parseFloat(req.body.lon));
     user.address.country = realCity[0].country; 

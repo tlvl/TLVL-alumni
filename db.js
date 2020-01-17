@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const readLine = require('readline');
 const dbURI = 'mongodb://localhost/alumni';
-mongoose.connect(dbURI,{useNewURlParser: true});
+mongoose.connect(dbURI,{useNewUrlParser: true});
 
 mongoose.connection.on('connected', () => {
 	console.log(`Mongoose connected to ${dbURI}`)
