@@ -30,84 +30,126 @@
 	</div>
   </form>
   <!–– END OF CHANGE EMAIL FORM––>
-	  
-	  
+	   <hr/>
 	    <!–– CHANGE PASSWORD FORM––>
 	  <form class="form-horizontal " role="form" method="POST" action="/account/changePassword">
+	  	<span class="text-danger align-middle">
+                    {{flash.error}}
+                </span>
+	  	    <div class = "row mt-3">
+	  	
+	  <div class = "col-md-3">
+	    Смена пароля:	 
+	  </div>
+	  <div class = "col-md-6">
+	     <input type="password"  name="password" class="form-control" id="password" placeholder="Введите новый пароль">
+	  </div>
+	</div>
 	   <div class = "row mt-3">
 	   <div class = "col-md-3 ">
-	     Смена пароля: 	 
+	     Пароль ещё раз: 	 
 		 </div>
 		  <div class = "col-md-6 ">
-		 <input type="text"  name="name" class="form-control" id="name" placeholder="Введите новый пароль">
+		 <input type="password"  name="password_confirmation" class="form-control" id="password-confirmation" placeholder="Повторите новый пароль">
 		 </div>
 		 <div class = "col-md-3 ">
-	     <button type="button" class = "btn btn-primary">
+	     <button type="submit" class = "btn btn-primary">
 	   Сменить
 	   </button>
 	   </div>
 		  </div>
       </form>
 	  <!–– END OF CHANGE PASSWORD FORM––>
-	  
+	   <hr/>
 	  <!–– CHANGE TEACHER FORM––>
-	  <form class="form-horizontal " role="form" method="POST" action="/account/changeTeacher">
+	  <form class="form-horizontal " role="form" method="POST" action="/account/changeTeacherName">
+	  	<div class = "row mt-3">
+	  <div class = "col-md-3">
+	    Текущий учитель:	 
+	  </div>
+	  <div class = "col-md-9">
+	    {{user.teacherName}}
+	  </div>
+	</div>
 	   <div class = "row mt-3">
 	   <div class = "col-md-3 ">
 	     Смена учителя:
 		 </div>
 		  <div class = "col-md-6 ">
-		 <input type="text"  name="name" class="form-control" id="name" placeholder="Введите нового учителя">
+		 <input type="text"  name="teacherName" class="form-control" id="teacherName" placeholder="Введите нового учителя">
 		 </div>
 		 <div class = "col-md-3 ">
-	     <button type="button" class = "btn btn-primary">
+	     <button type="submit" class = "btn btn-primary">
 	   Сменить
 	   </button>
 	   </div>
 		  </div>
       </form>
 	  <!–– END OF CHANGE TEACHER FORM––>
-	  
-	    <!–– CHANGE JOB FORM––>
-	  <form class="form-horizontal " role="form" method="POST" action="/account/changeJob">
+	   <hr/>
+	    <!–– CHANGE WORKSCOPE FORM––>
+	  <form class="form-horizontal " role="form" method="POST" action="/account/changeWorkScope">
+	  	  <div class = "row mt-3">
+	  <div class = "col-md-3">
+	    Текущая область деятельности: 	 
+	  </div>
+	  <div class = "col-md-9">
+	    {{user.workScope}}
+	  </div>
+	</div>
 	   <div class = "row mt-3">
 	   <div class = "col-md-3 ">
-	     Смена работы: 	 
+	     Смена области деятельности: 	 
 		 </div>
 		  <div class = "col-md-6 ">
-		 <input type="text"  name="name" class="form-control" id="name" placeholder="Введите новую область деятельности">
+		 <input type="text"  name="workScope" class="form-control" id="workScope" placeholder="Введите новую область деятельности">
 		 </div>
 		 <div class = "col-md-3 ">
-	  <button type="button" class = "btn btn-primary">
+	  <button type="submit" class = "btn btn-primary">
 	   Сменить
 	   </button>
 	   </div>
 		  </div>
       </form>
 	  <!–– END OF CHANGE JOB FORM––>
-	  
-	      <!–– CHANGE WISH FORM––>
-	  <form class="form-horizontal " role="form" method="POST" action="/account/changeJob">
+	   <hr/>
+	      <!–– CHANGE GREETING FORM––>
+	  <form class="form-horizontal " role="form" method="POST" action="/account/changeGreeting">
+	  	<div class = "row mt-3">
+	  <div class = "col-md-3">
+	    Текущее пожелание: 	 
+	  </div>
+	  <div class = "col-md-9">
+	    {{user.greeting}}
+	  </div>
+	</div>
 	   <div class = "row mt-3">
-	   <div class = "col-md-3 ">
+	   <div class = "col-md-3">
 	     Смена пожелания: 	 
 		 </div>
-		  <div class = "col-md-6 ">
-		 <textarea type="text"  name="name" class="form-control" id="name" placeholder="Введите новое пожелание"> </textarea>
+		  <div class = "col-md-6">
+		 <textarea type="text" name="greeting" class="form-control" id="greeting" placeholder="Введите новое пожелание"> </textarea>
 		 </div>
-		 <div class = "col-md-3 ">
-	   <button type="button" class = "btn btn-primary">
+		 <div class = "col-md-3">
+	   <button type="submit" class = "btn btn-primary">
 	   Сменить
 	   </button>
 	   </div>
 		  </div>
       </form>
-      <hr/>
 	  <!–– END OF WISH FORM––>
-	  
-	   <!–– ADDRESS CHANGE FORM––>
+	   <hr/>
+	   <!–– LOCATION CHANGE FORM––>
 	  <form class="form-horizontal mt-3" role="form" method="POST" action="/account/changeLocation">
-	   <div class="row">
+	  		<div class = "row mt-3">
+	  <div class = "col-md-3">
+	    Текущее местоположение: 	 
+	  </div>
+	  <div class = "col-md-9">
+	    {{user.addressForMap.name}}
+	  </div>
+	</div>
+	   <div class="row mt-3">
             <div class="col-md-3 field-label-responsive">
                 <label for="name">Город в котором находитесь</label>
             </div>
@@ -141,22 +183,23 @@
             </div>
         </div>
  
+  <input type="hidden" name="lat" value="" id="lat" class ="lat" size="10">
+  <input type="hidden" name="lon" value="" id="lon" class ="lon" size="10">
 
-
-         <input type="hidden" name="realAddr" value="" id="realAddr" class ="realAddr" size="10" / >
    </form>
-    <!–– END OF ADDRESS CHANGE FORM––>
+    <!–– END OF LOCATION CHANGE FORM––>
 
 
 </div>
   <!–– END OF CHANGE CREDENTIALS FORM––>
 <script>
-       
 function chooseAddr(lat1, lng1, lat2, lng2, osm_type) {
     console.log(lat1 + "/" + lng1);
     $('#results').empty();
     $('<b>', { html: "Вы выбрали адрес: " + osm_type }).appendTo('#results');
     $("#realAddr").val(lat1 + "/" +  lng1);
+	$("#lat").val(lat1);
+	$("#lon").val(lng1);
 
 }
 
@@ -184,7 +227,6 @@ function addr_search() {
         }
     });
 }
-
     </script>
 
   {{>footer}}

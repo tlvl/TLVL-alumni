@@ -26,17 +26,18 @@ router.post('/signup', (req, res) => {
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
     user.email = req.body.email;
+    user.greeting = req.body.greeting;
     user.teacherName = req.body.teacherName;
     user.workScope = req.body.workScope;
-    user.greeting = req.body.greeting;
     user.role = req.body.role;
     user.address.location = {
     lat: req.body.lat,
     lon: req.body.lon
   }
     const realCity = nearestCities(parseFloat(req.body.lat), parseFloat(req.body.lon));
-    user.address.country = realCity[0].country; 
+    user.address.country = realCity[0].country;
     user.addressForMap.country = realCity[0].country;
+    user.addressForMap.name = realCity[0].name;
     user.addressForMap.location = {
       lat: realCity[0].lat,
       lon: realCity[0].lon,
