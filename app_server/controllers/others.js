@@ -45,12 +45,6 @@ const aboutPage = (req, res) => {
     user: req.user,
   });
 };
-const signupPage = (req, res) => {
-  res.render('signup', {
-    title: 'Sign up',
-    user: req.user,
-  });
-};
 const loginPage = (req, res) => {
   res.render('login', {
     title: 'Login',
@@ -61,7 +55,6 @@ const loginPage = (req, res) => {
 
 module.exports = {
   aboutPage,
-  signupPage,
   loginPage,
   mapList,
 };

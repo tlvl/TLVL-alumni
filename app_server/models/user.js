@@ -28,33 +28,11 @@ const userSchema = new mongoose.Schema({
     type: String,
   },
   address: {
-    country: {
-      type: String,
-      required: true,
-    },
-    // TODO: city
     location: {
-      lat: {
-        type: Number,
+       display_name: {
+        type: String,
         required: true,
       },
-      lon: {
-        type: Number,
-        required: true,
-      },
-    },
-  },
-   addressForMap: {
-    country: {
-      type: String,
-      required: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    // TODO: city
-    location: {
       lat: {
         type: Number,
         required: true,

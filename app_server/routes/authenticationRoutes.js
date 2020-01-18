@@ -32,16 +32,9 @@ router.post('/signup', (req, res) => {
     user.role = req.body.role;
     user.address.location = {
     lat: req.body.lat,
-    lon: req.body.lon
+    lon: req.body.lon,
+    display_name: req.body.display_name,
   }
-    const realCity = nearestCities(parseFloat(req.body.lat), parseFloat(req.body.lon));
-    user.address.country = realCity[0].country;
-    user.addressForMap.country = realCity[0].country;
-    user.addressForMap.name = realCity[0].name;
-    user.addressForMap.location = {
-      lat: realCity[0].lat,
-      lon: realCity[0].lon,
-    };
  
     user.setPassword(req.body.password);
 

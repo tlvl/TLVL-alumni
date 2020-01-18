@@ -235,6 +235,7 @@
 
   <input type="hidden" name="lat" value="" id="lat" class ="lat" size="10">
   <input type="hidden" name="lon" value="" id="lon" class ="lon" size="10">
+  <input type="hidden" name="display_name" value="" id="display_name" class ="display_name" size="10">
 
 
     </form>
@@ -245,38 +246,42 @@
 
     <script>
        
-function chooseAddr(lat1, lng1, lat2, lng2, osm_type) {
-    console.log(lat1 + "/" + lng1);
+function chooseAddr(lat1, lng1, lat2, lng2, display_name) {
+    console.log(lat1 + "/" + lng1 + "/" + display_name);
     $('#results').empty();
-    $('<b>', { html: "Вы выбрали адрес: " + osm_type }).appendTo('#results');
     $("#realAddr").val(lat1 + "/" +  lng1);
 	$("#lat").val(lat1);
 	$("#lon").val(lng1);
-
+    $("#display_name").val(display_name);
+  
 }
 
 function addr_search() {
     var inp = document.getElementById("addr");
-
-    $.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + inp.value, function(data) {
+    
+    $.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=1&city=' + inp.value, function(data) {
         var items = [];
-
+          if(data.length != 0) {
+            console.log(data.length);
         $.each(data, function(key, val) {
             bb = val.boundingbox;
-            items.push("<li><a href='#' onclick='chooseAddr(" + bb[0] + ", " + bb[2] + ", " + bb[1] + ", " + bb[3]  + ", \"" + val.display_name + "\");return false;'>" + val.display_name + '</a></li>');
+           items.push("<b>Вы выбрали адрес: </b>" + val.display_name);
+            chooseAddr(+ bb[0], bb[2], bb[1], bb[3], val.display_name);
+
         });
 
 
-        $('#results').empty();
-        if (items.length != 0) {
-            $('<p>', { html: "Нажмите на адрес, чтобы выбрать:" }).append('#results');
+      
+    }
+    else if(data.length == 0){
+         console.log("No location found");
+    items.push("<p><b>Город не найден.</b></p>");
+}
+  $('#results').empty();
             $('<ul/>', {
                 'class': 'my-new-list',
                 html: items.join('')
             }).appendTo('#results');
-        } else {
-            $('<p>', { html: "Город не найден." }).append('#results');
-        }
     });
 }
 </script>
