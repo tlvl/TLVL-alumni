@@ -30,13 +30,33 @@ router.post('/signup', (req, res) => {
     user.teacherName = req.body.teacherName;
     user.workScope = req.body.workScope;
     user.role = req.body.role;
+ 
+    user.setPassword(req.body.password);
+  req.session.user = user;
+  req.session.save()
+    console.log(user.salt);
+    user.save((err) => {
+      if (err) {
+        res
+          .status(400)
+          .json(err);
+      } else {
+        res
+          .status(200)
+          .redirect('/signupLocation');
+      }
+    });
+  }
+});
+
+router.post('/signupLocation', (req, res) => {
+ const user = req.session.user;
     user.address.location = {
     lat: req.body.lat,
     lon: req.body.lon,
     display_name: req.body.display_name,
   }
- 
-    user.setPassword(req.body.password);
+
 
     console.log(user.salt);
     user.save((err) => {
@@ -50,7 +70,5 @@ router.post('/signup', (req, res) => {
           .redirect('/map');
       }
     });
-  }
 });
-
 module.exports = router;

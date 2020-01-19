@@ -12,6 +12,7 @@ router.use('/account', accountRoutes);
 router.get('/map', others.mapList);
 router.get('/about', others.aboutPage);
 router.get('/signup', signupController.signupPage);
+router.get('/signupLocation', signupController.signupLocationPage);
 router.get('/login', others.loginPage);
 router.get('/', (req, res) => res.redirect('/map'));
 

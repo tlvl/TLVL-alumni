@@ -31,15 +31,15 @@ const userSchema = new mongoose.Schema({
     location: {
        display_name: {
         type: String,
-        required: true,
+        required: false,
       },
       lat: {
         type: Number,
-        required: true,
+        required: false,
       },
       lon: {
         type: Number,
-        required: true,
+        required: false,
       },
     },
   },

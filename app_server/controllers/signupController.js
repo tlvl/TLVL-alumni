@@ -8,7 +8,7 @@ const signupPage = (req, res) => {
 };
 
 const signupLocationPage = (req, res) => {
-  res.render('signup', {
+  res.render('signupLocation', {
     title: 'Sign up',
     user: req.user,
   });
