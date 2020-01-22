@@ -26,5 +26,9 @@ router.route('/changePassword')
 router.route('/changeLocation')
   .get((req, res) => res.redirect('/account'))
   .post(connect.ensureLoggedIn(), accountController.changeLocation);
+  
+router.route('/changeGraduationYear')
+  .get((req, res) => res.redirect('/account'))
+  .post(connect.ensureLoggedIn(), accountController.changeGraduationYear);
 
 module.exports = router;

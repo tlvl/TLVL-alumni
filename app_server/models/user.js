@@ -27,6 +27,9 @@ const userSchema = new mongoose.Schema({
    role: {
     type: String,
   },
+   graduation_year: {
+    type: Number,
+  },
   address: {
     location: {
        display_name: {

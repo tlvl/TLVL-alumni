@@ -138,6 +138,67 @@
 		  </div>
       </form>
 	  <!–– END OF WISH FORM––>
+	  
+	    <hr/>
+	   <!–– CHANGE GRADUATION YEAR FORM––>
+	  <form class="form-horizontal " role="form" method="POST" action="/account/changeGraduationYear">
+	  	<div class = "row mt-3">
+	  <div class = "col-md-3">
+	    Текущий год выпуска:	 
+	  </div>
+	  <div class = "col-md-9">
+	    {{user.graduation_year}}
+	  </div>
+	</div>
+	   <div class = "row mt-3">
+	    <div class = "col-md-3">
+		Смена года выпуска:
+		</div>
+		  <div class = "col-md-6">
+		 <select name="graduation_year" class = "form-group form-control" >
+    <option value="2019">2019</option>
+    <option value="2018">2018</option>
+    <option value="2017">2017</option>
+    <option value="2016">2016</option>
+    <option value="2015">2015</option>
+    <option value="2014">2014</option>
+    <option value="2013">2013</option>
+    <option value="2012">2012</option>
+    <option value="2011">2011</option>
+    <option value="2010">2010</option>
+    <option value="2009">2009</option>
+    <option value="2008">2008</option>
+    <option value="2007">2007</option>
+    <option value="2006">2006</option>
+    <option value="2005">2005</option>
+    <option value="2004">2004</option>
+    <option value="2003">2003</option>
+    <option value="2002">2002</option>
+    <option value="2001">2001</option>
+    <option value="2000">2000</option>
+    <option value="1999">1999</option>
+    <option value="1998">1998</option>
+    <option value="1997">1997</option>
+    <option value="1996">1996</option>
+    <option value="1995">1995</option>
+    <option value="1994">1994</option>
+    <option value="1993">1993</option>
+    <option value="1992">1992</option>
+    <option value="1991">1991</option>
+    <option value="1990">1990</option>
+    <option value="1989">1989</option>
+    <option value="1988">1988</option>
+</select>
+		 </div>
+		 <div class = "col-md-3">
+	     <button type="submit" class = "btn btn-primary">
+	     Сменить
+	     </button>
+	     </div>
+		  </div>
+      </form>
+	  <!–– END OF CHANGE GRADUATION YEAR FORM––>
+	  
 	   <hr/>
 	   <!–– LOCATION CHANGE FORM––>
 	  <form class="form-horizontal mt-3" role="form" method="POST" action="/account/changeLocation">
@@ -192,42 +253,49 @@
 
 </div>
   <!–– END OF CHANGE CREDENTIALS FORM––>
-<script>
-function chooseAddr(lat1, lng1, lat2, lng2, osm_type) {
-    console.log(lat1 + "/" + lng1);
+ <script>
+       
+function chooseAddr(lat1, lng1, lat2, lng2, display_name) {
+    console.log(lat1 + "/" + lng1 + "/" + display_name);
     $('#results').empty();
-    $('<b>', { html: "Вы выбрали адрес: " + osm_type }).appendTo('#results');
     $("#realAddr").val(lat1 + "/" +  lng1);
+    $('<b>', { html: "Вы выбрали адрес: " + display_name }).appendTo('#results');
 	$("#lat").val(lat1);
 	$("#lon").val(lng1);
-
+    $("#display_name").val(display_name);
+  
 }
 
 function addr_search() {
-    var inp = document.getElementById("addr");
-
-    $.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + inp.value, function(data) {
-        var items = [];
-
+    let inp = document.getElementById("addr");
+    
+    $.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + inp.value, function(data) {
+        let items = [];
+        let temp = 0;
+          if(data.length != 0) {
         $.each(data, function(key, val) {
             bb = val.boundingbox;
+                 if(val.type == "administrative" || val.type == "city" || val.type == "town"){
             items.push("<li><a href='#' onclick='chooseAddr(" + bb[0] + ", " + bb[2] + ", " + bb[1] + ", " + bb[3]  + ", \"" + val.display_name + "\");return false;'>" + val.display_name + '</a></li>');
+            temp++;
+        }
         });
-
-
-        $('#results').empty();
-        if (items.length != 0) {
-            $('<p>', { html: "Нажмите на адрес, чтобы выбрать:" }).append('#results');
+    }
+        if(temp == 0) {
+           items.push("<p><b>Город не найден.</b></p>");
+         }
+    else if(data.length == 0){
+         console.log("No location found");
+    items.push("<p><b>Город не найден.</b></p>");
+}
+  $('#results').empty();
             $('<ul/>', {
                 'class': 'my-new-list',
                 html: items.join('')
             }).appendTo('#results');
-        } else {
-            $('<p>', { html: "Город не найден." }).append('#results');
-        }
     });
 }
-    </script>
+</script>
 
   {{>footer}}
 </div>
