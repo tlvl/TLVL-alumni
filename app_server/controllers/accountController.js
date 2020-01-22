@@ -44,6 +44,21 @@ const changeWorkScope = (req, res) => {
   });
 };
 
+const changeGraduationYear = (req, res) => {
+  User.findByIdAndUpdate(req.user.id, {
+    $set: {
+      graduation_year: req.body.graduation_year,
+    }
+  }, (err, user) => {
+    if (err) {
+      console.log(err.toJSON());
+      req.flash('error', 'No user found. Try logging in again');
+      res.redirect('/account');
+    }
+    res.redirect('/account');
+  });
+};
+
 const changeGreeting = (req, res) => {
   User.findByIdAndUpdate(req.user.id, {
     $set: {
@@ -132,5 +147,6 @@ module.exports = {
   changeGreeting,
   changeTeacherName,
   changePassword,
-  changeLocation
+  changeLocation,
+  changeGraduationYear
 };
