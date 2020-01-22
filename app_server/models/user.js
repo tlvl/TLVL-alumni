@@ -24,9 +24,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-   role: {
-    type: String,
-  },
    graduation_year: {
     type: Number,
   },
