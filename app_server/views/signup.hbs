@@ -288,14 +288,19 @@ function chooseAddr(lat1, lng1, lat2, lng2, display_name) {
 function addr_search() {
     let inp = document.getElementById("addr");
     
-    $.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + inp.value, function(data) {
+    $.getJSON('https://geocode-maps.yandex.ru/1.x/?format=json&apikey=d61231e6-cea5-435c-9616-8e5f25597fda&geocode=' + inp.value, function(data) {
         let items = [];
         let temp = 0;
-          if(data.length != 0) {
-        $.each(data, function(key, val) {
-            bb = val.boundingbox;
-                 if(val.type == "administrative" || val.type == "city" || val.type == "town"){
-            items.push("<li><a href='#' onclick='chooseAddr(" + bb[0] + ", " + bb[2] + ", " + bb[1] + ", " + bb[3]  + ", \"" + val.display_name + "\");return false;'>" + val.display_name + '</a></li>');
+     
+        let realData = data.response.GeoObjectCollection.featureMember;
+        console.log(realData.length);
+          if(realData.length != 0) {
+        $.each(realData, function(key, val) {
+
+                let coords = val.GeoObject.Point.pos.split(" ");
+                console.log(val.GeoObject.metaDataProperty.GeocoderMetaData.kind);
+                 if(val.GeoObject.metaDataProperty.GeocoderMetaData.kind == "locality"){
+            items.push("<li><a href='#' onclick='chooseAddr(" + coords[0] + ", " + coords[1] + ", " + coords[0] + ", " + coords[1] + ", \"" + val.GeoObject.metaDataProperty.GeocoderMetaData.text + "\");return false;'>" + val.GeoObject.metaDataProperty.GeocoderMetaData.text + '</a></li>');
             temp++;
         }
         });
