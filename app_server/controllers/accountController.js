@@ -59,10 +59,10 @@ const changeGraduationYear = (req, res) => {
   });
 };
 
-const changeGreeting = (req, res) => {
+const changeMeaning = (req, res) => {
   User.findByIdAndUpdate(req.user.id, {
     $set: {
-      greeting: req.body.greeting,
+      meaning: req.body.meaning,
     }
   }, (err, user) => {
     if (err) {
@@ -74,6 +74,35 @@ const changeGreeting = (req, res) => {
   });
 };
 
+const changeContacts = (req, res) => {
+  User.findByIdAndUpdate(req.user.id, {
+    $set: {
+      contacts: req.body.contacts,
+    }
+  }, (err, user) => {
+    if (err) {
+      console.log(err.toJSON());
+      req.flash('error', 'No user found. Try logging in again');
+      res.redirect('/account');
+    }
+    res.redirect('/account');
+  });
+};
+
+const changeFriends = (req, res) => {
+  User.findByIdAndUpdate(req.user.id, {
+    $set: {
+      friends: req.body.friends,
+    }
+  }, (err, user) => {
+    if (err) {
+      console.log(err.toJSON());
+      req.flash('error', 'No user found. Try logging in again');
+      res.redirect('/account');
+    }
+    res.redirect('/account');
+  });
+};
 const changeTeacherName = (req, res) => {
   User.findByIdAndUpdate(req.user.id, {
     $set: {
@@ -144,7 +173,9 @@ module.exports = {
   accountPage,
   changeEmail,
   changeWorkScope,
-  changeGreeting,
+  changeMeaning,
+  changeFriends,
+  changeContacts,
   changeTeacherName,
   changePassword,
   changeLocation,

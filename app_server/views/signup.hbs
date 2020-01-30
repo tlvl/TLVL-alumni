@@ -161,12 +161,12 @@
         </div>
          <div class="row">
             <div class="col-md-3 field-label-responsive">
-                <label for="greeting">Пожелание Лицею</label>
+                <label for="meaning">Чем для Вас стал Лицей?</label>
             </div>
             <div class="col-md-6">
       
               <div class="form-group" style="margin-left:  2.6rem">
-                 <textarea class="form-control" id="greeting" name="greeting" rows="3" ></textarea>
+                 <textarea class="form-control" id="meaning" name="meaning" rows="3" ></textarea>
         
            </div>
             </div>
@@ -179,6 +179,46 @@
             </div>
         </div>
 	
+     <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="contacts">Как с Вами связаться?</label>
+            </div>
+            <div class="col-md-6">
+      
+              <div class="form-group" style="margin-left:  2.6rem">
+                 <textarea class="form-control" id="contacts" name="contacts" rows="3" placeholder="Укажите контакты, которыми могут воспользоваться прочие выпускники Лицея"></textarea>
+        
+           </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <!-- Put name validation error messages here -->
+                        </span>
+                </div>
+            </div>
+        </div>
+
+         <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="friends">С кем из лицеистов Вы общаетесь до сих пор?</label>
+            </div>
+            <div class="col-md-6">
+      
+              <div class="form-group" style="margin-left:  2.6rem">
+                 <textarea class="form-control" id="friends" name="friends" rows="3" ></textarea>
+        
+           </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <!-- Put name validation error messages here -->
+                        </span>
+                </div>
+            </div>
+        </div>
+
 	   <div class="row">
             <div class="col-md-3 field-label-responsive">
                 <label for="addr">Город в котором находитесь</label>
@@ -186,7 +226,7 @@
             <div class="col-md-6">
       
         
-        <div id="search" class = "form-group" style="margin-left:  2.6rem" required>
+        <div id="search" class = "form-group" style="margin-left:  2.6rem" >
             <div class="row">
             <div class = "col-md-6">
             <input type="text" required name="addr" value="" id="addr" class ="addr form-control" size="10" oninvalid="this.setCustomValidity('Город обязателен')"
