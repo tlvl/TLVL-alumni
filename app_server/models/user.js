@@ -24,11 +24,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  contacts: {
+  contactsText: {
     type: String,
     trim: true,
   },
-  friends: {
+  friendsText: {
     type: String,
     trim: true,
   },

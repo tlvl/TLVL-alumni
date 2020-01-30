@@ -74,10 +74,10 @@ const changeMeaning = (req, res) => {
   });
 };
 
-const changeContacts = (req, res) => {
+const changeContactsText = (req, res) => {
   User.findByIdAndUpdate(req.user.id, {
     $set: {
-      contacts: req.body.contacts,
+      contactsText: req.body.contactsText,
     }
   }, (err, user) => {
     if (err) {
@@ -89,10 +89,10 @@ const changeContacts = (req, res) => {
   });
 };
 
-const changeFriends = (req, res) => {
+const changeFriendsText = (req, res) => {
   User.findByIdAndUpdate(req.user.id, {
     $set: {
-      friends: req.body.friends,
+      friendsText: req.body.friendsText,
     }
   }, (err, user) => {
     if (err) {
@@ -174,8 +174,8 @@ module.exports = {
   changeEmail,
   changeWorkScope,
   changeMeaning,
-  changeFriends,
-  changeContacts,
+  changeFriendsText,
+  changeContactsText,
   changeTeacherName,
   changePassword,
   changeLocation,

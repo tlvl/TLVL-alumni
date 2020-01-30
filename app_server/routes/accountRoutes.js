@@ -27,13 +27,13 @@ router.route('/changeLocation')
   .get((req, res) => res.redirect('/account'))
   .post(connect.ensureLoggedIn(), accountController.changeLocation);
   
-router.route('/changeFriends')
+router.route('/changeFriendsText')
   .get((req, res) => res.redirect('/account'))
-  .post(connect.ensureLoggedIn(), accountController.changeFriends);
+  .post(connect.ensureLoggedIn(), accountController.changeFriendsText);
 
-router.route('/changeContacts')
+router.route('/changeContactsText')
   .get((req, res) => res.redirect('/account'))
-  .post(connect.ensureLoggedIn(), accountController.changeContacts);
+  .post(connect.ensureLoggedIn(), accountController.changeContactsText);
 
 router.route('/changeGraduationYear')
   .get((req, res) => res.redirect('/account'))

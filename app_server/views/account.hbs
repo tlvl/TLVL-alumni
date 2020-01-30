@@ -140,13 +140,13 @@
 	  <!–– END OF WISH FORM––>
       <hr/>
 	  <!–– CHANGE MEANING FORM––>
-	  <form class="form-horizontal " role="form" method="POST" action="/account/changeContacts">
+	  <form class="form-horizontal " role="form" method="POST" action="/account/changeContactsText">
 	  	<div class = "row mt-3">
 	  <div class = "col-md-3">
 	   Как с Вами связаться?
 	  </div>
 	  <div class = "col-md-9">
-	    {{user.contacts}}
+	    {{user.contactsText}}
 	  </div>
 	</div>
 	   <div class = "row mt-3">
@@ -154,7 +154,7 @@
 	     Сменить
 		 </div>
 		  <div class = "col-md-6">
-		 <textarea class="form-control" id="contacts" name="contacts" rows="3" placeholder="Укажите контакты, которыми могут воспользоваться прочие выпускники Лицея"></textarea>
+		 <textarea class="form-control" id="contactsText" name="contactsText" rows="3" placeholder="Укажите контакты, которыми могут воспользоваться прочие выпускники Лицея"></textarea>
 		 </div>
 		 <div class = "col-md-3">
 	   <button type="submit" class = "btn btn-primary">
@@ -166,13 +166,13 @@
 	  <!–– END OF WISH FORM––>
       <hr/>
 	  <!–– CHANGE MEANING FORM––>
-	  <form class="form-horizontal " role="form" method="POST" action="/account/changeFriends">
+	  <form class="form-horizontal " role="form" method="POST" action="/account/changeFriendsText">
 	  	<div class = "row mt-3">
 	  <div class = "col-md-3">
 	    С кем из лицеистов Вы общаетесь до сих пор?
 	  </div>
 	  <div class = "col-md-9">
-	    {{user.friends}}
+	    {{user.friendsText}}
 	  </div>
 	</div>
 	   <div class = "row mt-3">
