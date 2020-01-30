@@ -17,7 +17,7 @@ router.get('/logout', (req, res) => {
 });
 
 router.post('/signup', (req, res) => {
-  if (!req.body.email || !req.body.password || !req.body.firstName || !req.body.lastName || !req.body.role) {
+  if (!req.body.email || !req.body.password || !req.body.firstName || !req.body.lastName) {
     return res
       .status(400)
       .json({"message": "All fields required"});
@@ -26,10 +26,12 @@ router.post('/signup', (req, res) => {
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
     user.email = req.body.email;
-    user.greeting = req.body.greeting;
+    user.meaning = req.body.meaning;
+    user.friendsText = req.body.friendsText;
+    user.contactsText = req.body.contactsText;
     user.teacherName = req.body.teacherName;
     user.workScope = req.body.workScope;
-    user.role = req.body.role;
+    user.graduation_year = req.body.graduation_year
     user.address.location = {
     lat: req.body.lat,
     lon: req.body.lon,

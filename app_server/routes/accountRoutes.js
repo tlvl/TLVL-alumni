@@ -11,9 +11,9 @@ router.route('/changeWorkScope')
   .get((req, res) => res.redirect('/account'))
   .post(connect.ensureLoggedIn(), accountController.changeWorkScope);
 
-router.route('/changeGreeting')
+router.route('/changeMeaning')
   .get((req, res) => res.redirect('/account'))
-  .post(connect.ensureLoggedIn(), accountController.changeGreeting);
+  .post(connect.ensureLoggedIn(), accountController.changeMeaning);
 
 router.route('/changeTeacherName')
   .get((req, res) => res.redirect('/account'))
@@ -27,8 +27,15 @@ router.route('/changeLocation')
   .get((req, res) => res.redirect('/account'))
   .post(connect.ensureLoggedIn(), accountController.changeLocation);
   
+router.route('/changeFriendsText')
+  .get((req, res) => res.redirect('/account'))
+  .post(connect.ensureLoggedIn(), accountController.changeFriendsText);
+
+router.route('/changeContactsText')
+  .get((req, res) => res.redirect('/account'))
+  .post(connect.ensureLoggedIn(), accountController.changeContactsText);
+
 router.route('/changeGraduationYear')
   .get((req, res) => res.redirect('/account'))
   .post(connect.ensureLoggedIn(), accountController.changeGraduationYear);
-
 module.exports = router;

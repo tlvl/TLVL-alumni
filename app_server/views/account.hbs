@@ -113,22 +113,74 @@
       </form>
 	  <!–– END OF CHANGE JOB FORM––>
 	   <hr/>
-	      <!–– CHANGE GREETING FORM––>
+	      <!–– CHANGE MEANING FORM––>
 	  <form class="form-horizontal " role="form" method="POST" action="/account/changeGreeting">
 	  	<div class = "row mt-3">
 	  <div class = "col-md-3">
-	    Текущее пожелание: 	 
+	    Чем для Вас стал Лицей?
 	  </div>
 	  <div class = "col-md-9">
-	    {{user.greeting}}
+	    {{user.meaning}}
 	  </div>
 	</div>
 	   <div class = "row mt-3">
 	   <div class = "col-md-3">
-	     Смена пожелания: 	 
+	     Сменить
 		 </div>
 		  <div class = "col-md-6">
-		 <textarea type="text" name="greeting" class="form-control" id="greeting" placeholder="Введите новое пожелание"> </textarea>
+		 <textarea type="text" name="meaning" class="form-control" id="meaning" placeholder="Чем для Вас стал Лицей?"> </textarea>
+		 </div>
+		 <div class = "col-md-3">
+	   <button type="submit" class = "btn btn-primary">
+	   Сменить
+	   </button>
+	   </div>
+		  </div>
+      </form>
+	  <!–– END OF WISH FORM––>
+      <hr/>
+	  <!–– CHANGE MEANING FORM––>
+	  <form class="form-horizontal " role="form" method="POST" action="/account/changeContactsText">
+	  	<div class = "row mt-3">
+	  <div class = "col-md-3">
+	   Как с Вами связаться?
+	  </div>
+	  <div class = "col-md-9">
+	    {{user.contactsText}}
+	  </div>
+	</div>
+	   <div class = "row mt-3">
+	   <div class = "col-md-3">
+	     Сменить
+		 </div>
+		  <div class = "col-md-6">
+		 <textarea class="form-control" id="contactsText" name="contactsText" rows="3" placeholder="Укажите контакты, которыми могут воспользоваться прочие выпускники Лицея"></textarea>
+		 </div>
+		 <div class = "col-md-3">
+	   <button type="submit" class = "btn btn-primary">
+	   Сменить
+	   </button>
+	   </div>
+		  </div>
+      </form>
+	  <!–– END OF WISH FORM––>
+      <hr/>
+	  <!–– CHANGE MEANING FORM––>
+	  <form class="form-horizontal " role="form" method="POST" action="/account/changeFriendsText">
+	  	<div class = "row mt-3">
+	  <div class = "col-md-3">
+	    С кем из лицеистов Вы общаетесь до сих пор?
+	  </div>
+	  <div class = "col-md-9">
+	    {{user.friendsText}}
+	  </div>
+	</div>
+	   <div class = "row mt-3">
+	   <div class = "col-md-3">
+	     Сменить
+		 </div>
+		  <div class = "col-md-6">
+		 <textarea type="text" name="friends" class="form-control" id="friends" placeholder="С кем из лицеистов Вы общаетесь до сих пор?"> </textarea>
 		 </div>
 		 <div class = "col-md-3">
 	   <button type="submit" class = "btn btn-primary">
@@ -140,7 +192,7 @@
 	  <!–– END OF WISH FORM––>
 	  
 	    <hr/>
-	   <!–– CHANGE GRADUATION YEAR FORM––>
+	 <!–– CHANGE GRADUATION YEAR FORM––>
 	  <form class="form-horizontal " role="form" method="POST" action="/account/changeGraduationYear">
 	  	<div class = "row mt-3">
 	  <div class = "col-md-3">
@@ -207,7 +259,7 @@
 	    Текущее местоположение: 	 
 	  </div>
 	  <div class = "col-md-9">
-	    {{user.addressForMap.name}}
+	    {{user.address.location.display_name}}
 	  </div>
 	</div>
 	   <div class="row mt-3">

@@ -20,12 +20,21 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  greeting: {
+  meaning: {
     type: String,
     trim: true,
   },
-   graduation_year: {
-    type: Number,
+  contactsText: {
+    type: String,
+    trim: true,
+  },
+  friendsText: {
+    type: String,
+    trim: true,
+  },
+  graduation_year: {
+    type: String,
+    trim: true,
   },
   address: {
     location: {
