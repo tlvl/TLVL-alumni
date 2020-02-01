@@ -1,10 +1,13 @@
 const request = require('request');
-const apiOptions = {
-  server : 'http://localhost:3000'
-};
+let server = 'http://localhost:3000';
+
 if (process.env.NODE_ENV === 'production') {
-  console.log("Server not found");
+  server = process.env.server;
 }
+
+const apiOptions = {
+  server : server
+};
 
 const renderMap = function(req, res, responseBody) {
 	res.render('map', {
