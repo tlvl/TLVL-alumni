@@ -8,11 +8,10 @@ const others = require('../controllers/others');
 router.use('/', authenticationRoutes);
 router.use('/account', accountRoutes);
 
-/* GET index page. */
-router.get('/map', others.mapList);
-router.get('/about', others.aboutPage);
+router.get('/map', others.renderMapPage);
+router.get('/about', others.renderAboutPage);
 router.get('/signup', signupController.signupPage);
-router.get('/login', others.loginPage);
+router.get('/login', others.renderLoginPage);
 router.get('/', (req, res) => res.redirect('/map'));
 
 module.exports = router;

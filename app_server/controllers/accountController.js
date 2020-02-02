@@ -1,4 +1,4 @@
-const flash = require('connect-flash');
+
 const User = require('../models/user');
 
 const renderAccountPage = (req, res) => {
