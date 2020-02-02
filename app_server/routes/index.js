@@ -10,7 +10,8 @@ router.use('/account', accountRoutes);
 
 router.get('/map', others.renderMapPage);
 router.get('/about', others.renderAboutPage);
-router.get('/signup', signupController.signupPage);
+router.get('/signup', signupController.renderSignupPage);
+router.post('/signup', signupController.signup);
 router.get('/login', others.renderLoginPage);
 router.get('/', (req, res) => res.redirect('/map'));
 
