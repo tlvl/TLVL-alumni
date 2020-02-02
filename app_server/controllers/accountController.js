@@ -118,19 +118,24 @@ const changeTeacherName = (req, res) => {
 };
 
 const changePassword = (req, res) => {
-  User.findById(req.user.id, {
-  }, (err, user) => {
+  User.findById(req.user.id, (err, user) => {
     if (err) {
       console.log(err.toJSON());
       req.flash('error', 'No user found. Try logging in again');
-      res.redirect('/account');
     }
-    if (req.body.password === req.body.password_confirmation) {
-      user.setPassword(req.body.password);
-      req.logout();
+
+    if (req.body.password !== req.body.password_confirmation) {
+      req.flash('error', 'Пароли не совпадают');
     } else {
-     	req.flash('error', 'Пароли не совпадают');
-    }   
+      user.setPassword(req.body.password);
+      user.save((err) => {
+        if (err) {
+          console.log(err.toJSON());
+          req.flash('error', 'Error updating password');
+        }
+      });
+    }
+
     res.redirect('/account');
   });
 };
