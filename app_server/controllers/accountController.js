@@ -1,6 +1,5 @@
 const flash = require('connect-flash');
 const User = require('../models/user');
-const nearestCities = require('find-nearest-cities');
 
 const accountPage = (req, res) => {
   User.findById(req.user.id, (err, user) => {
@@ -137,27 +136,19 @@ const changePassword = (req, res) => {
 };
 
 const changeLocation = (req, res) => {
-  User.findById(req.user.id, {
-  }, (err, user) => {
+  User.findById(req.user.id, (err, user) => {
     if (err) {
       console.log(err.toJSON());
       req.flash('error', 'No user found. Try logging in again');
       res.redirect('/account');
     }
+
     user.address.location = {
       lat: req.body.lat,
-      lon: req.body.lon
-    }
-    const realCity = nearestCities(parseFloat(req.body.lat), parseFloat(req.body.lon));
-    user.address.country = realCity[0].country; 
-    user.addressForMap.country = realCity[0].country;
-    user.addressForMap.name = realCity[0].name;
-    console.log(realCity[0].name, user.addressForMap.name);
-
-    user.addressForMap.location = {
-      lat: realCity[0].lat,
-      lon: realCity[0].lon,
+      lon: req.body.lon,
+      display_name: req.body.display_name,
     };
+
     user.save((err) => {
       if (err) {
         console.log(err.toJSON());
@@ -167,7 +158,6 @@ const changeLocation = (req, res) => {
     });
   });
 };
-
 
 module.exports = {
   accountPage,
