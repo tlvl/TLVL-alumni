@@ -1,10 +1,11 @@
 const flash = require('connect-flash');
 const User = require('../models/user');
 
-const accountPage = (req, res) => {
+const renderAccountPage = (req, res) => {
   User.findById(req.user.id, (err, user) => {
     if (err) {
-      user = req.user;
+      req.logout();
+      res.redirect('map');
     }
     res.render('account', {
       title: 'My account',
@@ -165,7 +166,7 @@ const changeLocation = (req, res) => {
 };
 
 module.exports = {
-  accountPage,
+  renderAccountPage,
   changeEmail,
   changeWorkScope,
   changeMeaning,
