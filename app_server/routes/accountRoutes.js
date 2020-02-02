@@ -3,39 +3,33 @@ const router = require('express').Router();
 const accountController = require('../controllers/accountController');
 
 router.get('/', connect.ensureLoggedIn(), accountController.renderAccountPage);
-router.route('/changeEmail')
-  .get((req, res) => res.redirect('/account'))
-  .post(connect.ensureLoggedIn(), accountController.changeEmail);
+router.get('/*', (req, res) => res.redirect('/account'));
 
-router.route('/changeWorkScope')
-  .get((req, res) => res.redirect('/account'))
-  .post(connect.ensureLoggedIn(), accountController.changeWorkScope);
+router.post('/changeEmail',
+  connect.ensureLoggedIn(), accountController.changeEmail);
 
-router.route('/changeMeaning')
-  .get((req, res) => res.redirect('/account'))
-  .post(connect.ensureLoggedIn(), accountController.changeMeaning);
+router.post('/changeWorkScope',
+  connect.ensureLoggedIn(), accountController.changeWorkScope);
 
-router.route('/changeTeacherName')
-  .get((req, res) => res.redirect('/account'))
-  .post(connect.ensureLoggedIn(), accountController.changeTeacherName);
+router.post('/changeMeaning',
+  connect.ensureLoggedIn(), accountController.changeMeaning);
 
-router.route('/changePassword')
-  .get((req, res) => res.redirect('/account'))
-  .post(connect.ensureLoggedIn(), accountController.changePassword);
+router.post('/changeTeacherName',
+  connect.ensureLoggedIn(), accountController.changeTeacherName);
 
-router.route('/changeLocation')
-  .get((req, res) => res.redirect('/account'))
-  .post(connect.ensureLoggedIn(), accountController.changeLocation);
-  
-router.route('/changeFriendsText')
-  .get((req, res) => res.redirect('/account'))
-  .post(connect.ensureLoggedIn(), accountController.changeFriendsText);
+router.post('/changePassword',
+  connect.ensureLoggedIn(), accountController.changePassword);
 
-router.route('/changeContactsText')
-  .get((req, res) => res.redirect('/account'))
-  .post(connect.ensureLoggedIn(), accountController.changeContactsText);
+router.post('/changeLocation',
+  connect.ensureLoggedIn(), accountController.changeLocation);
 
-router.route('/changeGraduationYear')
-  .get((req, res) => res.redirect('/account'))
-  .post(connect.ensureLoggedIn(), accountController.changeGraduationYear);
+router.post('/changeFriendsText',
+  connect.ensureLoggedIn(), accountController.changeFriendsText);
+
+router.post('/changeContactsText',
+  connect.ensureLoggedIn(), accountController.changeContactsText);
+
+router.post('/changeGraduationYear',
+  connect.ensureLoggedIn(), accountController.changeGraduationYear);
+
 module.exports = router;
