@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 const readLine = require('readline');
-const dbURI = 'mongodb://localhost/alumni';
-if (process.env.NODE_ENV === 'production') {
-  server = process.env.dbURI;
-  console.log("production mode");
-}
+const dbURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/alumni';
 mongoose.connect(dbURI,{useNewUrlParser: true});
 
 mongoose.connection.on('connected', () => {
