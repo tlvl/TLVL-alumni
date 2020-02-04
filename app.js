@@ -1,9 +1,13 @@
+const https = require('https');
+//const privateKey  = fs.readFileSync('sslcert/server.key', 'utf8');
+//const certificate = fs.readFileSync('sslcert/server.crt', 'utf8');
+//const credentials = {key: privateKey, cert: certificate};
+const helmet = require('helmet');
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
 require('./db');
 const session = require('express-session');
 const flash = require('connect-flash');
@@ -21,7 +25,7 @@ hbs.registerPartials(path.join(__dirname, 'app_server', 'views', 'partials'));
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'hbs');
 
-
+app.use(helmet());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -55,5 +59,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//let httpsServer = https.createServer(credentials, app);
+//httpsServer.listen(8443);
 
 module.exports = app;
