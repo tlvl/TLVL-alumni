@@ -1,11 +1,25 @@
 <div style="background-color:#F8F9FA;">
   {{>navbar map='active'}}
 
-
-  <div class = "container-fluid mr-3">
-    <div id="map" style="width: max-width; height: 560px"></div>
+  <div class = "container-fluid mr-3 " style="width: max-width; height: 560px">
+   <div id="mapid">
+   </div>
   </div>
-
   {{>footer}}
   <script src="/js/map.js"></script>
+  {{#each locations.locations as |item i|}}
+
+  <script>
+      for(let x =0;x <= parseInt("{{i}}"); x++) {
+         SetCountry();
+      }
+      function SetCountry() {
+	 
+  	let v = L.marker([parseInt("{{item.lat}}"), parseInt("{{item.lng}}")]).addTo(mymap); 
+  v.bindPopup("<strong>"+ JSON.stringify("{{item.location_name}}").replace(/['"]+/g, '') + "</strong><br />"+ JSON.stringify("{{item.alumni_count}}").replace(/['"]+/g, '') +" Выпускника").openPopup();
+
+}
+</script>
+
+{{/each}}
 </div>
