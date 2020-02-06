@@ -3,7 +3,7 @@ const apiOptions = {
   server : 'http://localhost:3000'
 };
 if (process.env.NODE_ENV === 'production') {
-  console.log("Server not found");
+  console.log("production mode");
   apiOptions.server = 'https://tlvl-31.herokuapp.com/';
 }
 
