@@ -15,7 +15,7 @@
       }
       function SetCountry() {
 	 
-  	let v = L.marker([parseInt("{{item.lat}}"), parseInt("{{item.lng}}")]).addTo(mymap); 
+  	let v = L.marker([parseFloat("{{item.lat}}"), parseFloat("{{item.lng}}")]).addTo(mymap); 
   v.bindPopup("<strong>"+ "{{item.location_name}}" + "</strong><br />"+ "{{item.alumni_count}}" +" Выпускника");
 }
 </script>
