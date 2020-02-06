@@ -18,7 +18,7 @@ function chooseAddr(lat1, lng1, lat2, lng2, display_name) {
 function addr_search() {
     let inp = document.getElementById("addr");
     
-    $.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + inp.value, function(data) {
+    $.getJSON('https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + inp.value, function(data) {
         let items = [];
         let temp = 0;
           if(data.length != 0) {
