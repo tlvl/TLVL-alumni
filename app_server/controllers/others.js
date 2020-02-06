@@ -4,7 +4,7 @@ const apiOptions = {
 };
 if (process.env.NODE_ENV === 'production') {
   console.log("production mode");
-  apiOptions.server = 'https://tlvl-31.herokuapp.com/';
+  apiOptions.server = 'https://tlvl-31.herokuapp.com';
 }
 
 const renderMap = function(req, res, responseBody) {
@@ -21,10 +21,6 @@ const mapList = function(req, res){
     url : apiOptions.server + path,
     method : 'GET',
     json : {},
-    qs : {
-      lng : -0.7992599,
-      lat : 51.378091
-    }
   };
   request(
     requestOptions,
