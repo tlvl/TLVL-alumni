@@ -4,6 +4,7 @@ const apiOptions = {
 };
 if (process.env.NODE_ENV === 'production') {
   console.log("Server not found");
+  apiOptions.server = 'https://tlvl-31.herokuapp.com/';
 }
 
 const renderMap = function(req, res, responseBody) {
