@@ -20,7 +20,7 @@
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
                         <input type="text" name="firstName" class="form-control" id="firstName"
-                               placeholder="Павел" required="" autofocus oninvalid="this.setCustomValidity('Имя и Фамилия обязательны')"
+                               placeholder="Павел" required="" autofocus oninvalid="this.setCustomValidity('Имя обязательно')"
  oninput="setCustomValidity('')"  >
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
                         <input type="text" name="lastName" class="form-control" id="lastName"
-                               placeholder="Гуляев" required="" autofocus oninvalid="this.setCustomValidity('Имя и Фамилия обязательны')"
+                               placeholder="Гуляев" required="" autofocus oninvalid="this.setCustomValidity('Фамилия обязательна')"
  oninput="setCustomValidity('')"  >
                     </div>
                 </div>
@@ -258,12 +258,14 @@
 	
 	  <div class="row mt-4">
             <div class="col-md-3 field-label-responsive">
-                <label for="graduation_year">Год выпуска:</label>
+                <label for="graduation_year">Год выпуска*</label>
             </div>
             <div class="col-md-6">
        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-          <select name="graduation_year" class = "form-group form-control" style="margin-left:  2.6rem ">
-    <option value="2018">2019</option>
+          <select name="graduation_year" required class = "form-group form-control" style="margin-left:  2.6rem " oninvalid="this.setCustomValidity('Год выпуска обязателен')"
+ oninput="setCustomValidity('')">
+    <option value=""></option>
+    <option value="2019">2019</option>
     <option value="2018">2018</option>
     <option value="2017">2017</option>
     <option value="2016">2016</option>
