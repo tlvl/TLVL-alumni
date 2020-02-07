@@ -7,18 +7,5 @@
   </div>
   {{>footer}}
   <script src="/js/map.js"></script>
-  {{#each locations.locations as |item i|}}
 
-  <script>
-      for(let x =0;x <= parseInt("{{i}}"); x++) {
-         SetCountry();
-      }
-      function SetCountry() {
-	 
-  	let v = L.marker([parseFloat("{{item.lat}}"), parseFloat("{{item.lng}}")]).addTo(mymap); 
-  v.bindPopup("<strong>"+ "{{item.location_name}}" + "</strong><br />"+ "{{item.alumni_count}}" +" Выпускника");
-}
-</script>
-
-{{/each}}
 </div>
