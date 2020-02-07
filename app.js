@@ -1,3 +1,4 @@
+const helmet = require('helmet');
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -31,6 +32,7 @@ if(process.env.NODE_ENV === 'production') {
 	app.use(forceSsl);
 }
 
+app.use(helmet())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
