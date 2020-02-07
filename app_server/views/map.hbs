@@ -10,14 +10,7 @@
   {{#each locations.locations as |item i|}}
 
   <script>
-      for(let x =0;x <= parseInt("{{i}}"); x++) {
-         SetCountry();
-      }
-      function SetCountry() {
-	 
-  	let v = L.marker([parseFloat("{{item.lat}}"), parseFloat("{{item.lng}}")]).addTo(mymap); 
-  v.bindPopup("<strong>"+ "{{item.location_name}}" + "</strong><br />"+ "Выпускников: " + "{{item.alumni_count}}");
-}
+
 </script>
 
 {{/each}}
