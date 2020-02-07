@@ -3,7 +3,6 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
 require('./db');
 const session = require('express-session');
 const flash = require('connect-flash');
@@ -21,6 +20,16 @@ hbs.registerPartials(path.join(__dirname, 'app_server', 'views', 'partials'));
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'hbs');
 
+const forceSsl = function (req, res, next) {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+        return res.redirect(['https://', req.get('Host'), req.url].join(''));
+    }
+    return next();
+ };
+ 
+if(process.env.NODE_ENV === 'production') {
+	app.use(forceSsl);
+}
 
 app.use(logger('dev'));
 app.use(express.json());
