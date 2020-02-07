@@ -16,21 +16,18 @@ const loadLocations = async () => {
   const json = await response.json();
   return json.locations;
 }
+function updateMap() {
 loadLocations().then((locations) => {
     for (let location of locations) {
       createPlacemark(location);
     }
   });
 
-      for(let x =0;x <= parseInt("{{i}}"); x++) {
-         SetCountry();
-      }
-      function SetCountry() {
-	 
-  	
 }
 
 const createPlacemark = (location) => {
  let v = L.marker([parseFloat(location.lat), parseFloat(location.lng)]).addTo(myMap); 
   v.bindPopup("<strong>"+ location.location_name + "</strong><br />"+ "Выпускников: " + location.alumni_count);
 }
+
+updateMap();
