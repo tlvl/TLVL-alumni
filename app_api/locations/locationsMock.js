@@ -8,7 +8,7 @@ const mockLocations = () => {
       country_code: "EE",
       lat: 59.4370,
       lng: 24.7536,
-      alumni_count: 45,
+      alumni_count: 51,
     },
       {
       location_id: 1234,
@@ -53,6 +53,15 @@ const mockLocations = () => {
       country_code: "Ru",
       lat: 59.9386300,
       lng: 30.3141300,
+      alumni_count: 1,
+       },   
+        {
+      location_id: 1234,
+      location_name: "Copenhagen",
+      country: "Denmark",
+      country_code: "DK",
+      lat: 55.676098,
+      lng: 12.4100724,
       alumni_count: 1,
        },   
   ]
