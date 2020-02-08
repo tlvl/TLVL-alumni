@@ -44,7 +44,7 @@ const mockLocations = () => {
       country_code: "GB",
       lat: 51.3473219,
       lng: -0.2876474,
-      alumni_count: 1,
+      alumni_count: 2,
        },
     {
       location_id: 1234,
